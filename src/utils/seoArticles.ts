@@ -498,7 +498,7 @@ ${relatedHtml}
     </main>
 
     <footer class="site-footer">
-      <p>© ${new Date().getFullYear()} شركة رويال موفرز VIP لنقل وتغليف الأثاث بمصر — المقطم، القاهرة — الخط الساخن: <a href="tel:${PHONE_DISPLAY}" onclick="return gtag_report_conversion('tel:${PHONE_DISPLAY}');" dir="ltr">${PHONE_DISPLAY}</a></p>
+      <p>© ${new Date().getFullYear()} شركة رويال موفرز لنقل وتغليف الأثاث في القاهرة والجيزة — الخط الساخن: <a href="tel:${PHONE_DISPLAY}" onclick="return gtag_report_conversion('tel:${PHONE_DISPLAY}');" dir="ltr">${PHONE_DISPLAY}</a></p>
       <p><a href="/">العودة إلى الصفحة الرئيسية</a> · <a href="/articles/">تصفح جميع المقالات</a></p>
     </footer>
 ${buildStickyCtaHtml(waUrl)}

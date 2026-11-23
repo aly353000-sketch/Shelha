@@ -344,7 +344,6 @@ function inferLinkSourceLabel(link: HTMLAnchorElement, type: 'phone' | 'whatsapp
   if (link.closest('header, nav')) sectionTag = 'الشريط العلوي';
   else if (link.closest('footer')) sectionTag = 'أسفل الموقع';
   else if (link.closest('#hero')) sectionTag = 'القسم الرئيسي';
-  else if (link.closest('#location-section')) sectionTag = 'خريطة المقطم';
   else if (link.closest('#winch-section, #winch-deep-dive')) sectionTag = 'قسم الونش';
   else if (link.closest('#interactive-services, #services')) sectionTag = 'بطاقات الخدمات';
 

@@ -114,7 +114,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const mobileNavLinks = [
     { label: t('الرئيسية', 'Home'), href: '#hero' },
     { label: t('مقالات وأدلة نقل الأثاث 📖', 'Moving Guides & Articles 📖'), href: '/articles/' },
-    { label: t('مقرنا بالمقطم 📍', 'Location'), href: '#location-section' },
     { label: t('خدمات الشقق والفلل VIP', 'VIP Moving Services'), href: '#services' },
     { label: t('خدمات تفاعلية 🔄', 'Interactive Services'), href: '#interactive-services' },
     { label: t('كمبوندات نخدمها 🏰', 'Compounds'), href: '#luxury-compounds' },

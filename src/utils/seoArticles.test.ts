@@ -11,8 +11,8 @@ import {
   ADS_CONVERSION_SEND_TO,
 } from './seoArticles';
 
-test('Batch 1 SEO articles registry passes anti-duplication & SEO checks', () => {
-  assert.equal(SEO_ARTICLES.length, 8);
+test('Batch 1 & Batch 2 SEO articles registry passes anti-duplication & SEO checks', () => {
+  assert.equal(SEO_ARTICLES.length, 12);
   const res = validateArticleRegistry(SEO_ARTICLES, PLANNED_SEO_BACKLOG);
   assert.equal(res.valid, true, `Validation errors: ${res.errors.join('; ')}`);
 });

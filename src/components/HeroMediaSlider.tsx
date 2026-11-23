@@ -5,6 +5,10 @@ import { useApp } from '../context/AppContext';
 interface MediaSlide {
   type: 'image' | 'video';
   src: string;
+  mobileSrc?: string;
+  poster?: string;
+  width?: number;
+  height?: number;
   titleAr: string;
   titleEn: string;
   badgeAr: string;
@@ -13,58 +17,91 @@ interface MediaSlide {
 
 const SLIDES: MediaSlide[] = [
   {
+    type: 'image',
+    src: '/assets/images/royal_delicate_packing.webp',
+    mobileSrc: '/assets/images/royal_delicate_packing_mobile.webp',
+    width: 800,
+    height: 597,
+    titleAr: 'عناية فائقة بتغليف وحماية التحف والنجف والصالونات الفاخرة بأعلى معايير الأمان',
+    titleEn: 'White-glove Moving & Delicate Antiques Protection in Luxury Salon',
+    badgeAr: 'تغليف فندقي VIP للتحف 💎',
+    badgeEn: 'White-Glove Antiques Care 💎',
+  },
+  {
+    type: 'image',
+    src: '/assets/optimized/crew_sofa_wrap.webp',
+    width: 760,
+    height: 1483,
+    titleAr: 'طاقم رويال موفرز VIP الثلاثي المتخصص أثناء إحكام تغليف كنب الصالون بالاسترتش والبابلز',
+    titleEn: 'Royal Movers 3-Man Specialist Crew Wrapping Luxury Sofa with Stretch & Bubble',
+    badgeAr: 'فريق التغليف المتخصص 🛡️',
+    badgeEn: 'Specialist Packing Crew 🛡️',
+  },
+  {
+    type: 'image',
+    src: '/assets/images/royal_movers_workers_loading.webp',
+    width: 768,
+    height: 1376,
+    titleAr: 'طاقم رويال موفرز VIP الرسمي أثناء تحميل ورص الأثاث بالكراتين المقواة بأعلى درجات العناية',
+    titleEn: 'Royal Movers VIP Crew Loading Furniture with Uniforms & Branded Boxes',
+    badgeAr: 'طاقم عمل رسمي معتمد VIP 👑',
+    badgeEn: 'Official Royal Movers VIP Crew 👑',
+  },
+  {
+    type: 'image',
+    src: '/assets/optimized/padded_truck_bed.webp',
+    width: 720,
+    height: 960,
+    titleAr: 'صندوق سيارات رويال موفرز المغلقة والمبطنة بشرائح خشبية وأحزمة تثبيت لحماية العفش',
+    titleEn: 'Padded Closed Truck Cargo Bed with Solid Wood Battens & Safety Straps',
+    badgeAr: 'سيارات نقل مغلقة ومبطنة 🚛',
+    badgeEn: 'Equipped Padded Trucks 🚛',
+  },
+  {
+    type: 'image',
+    src: '/assets/optimized/before_after_wrap.webp',
+    width: 760,
+    height: 760,
+    titleAr: 'توثيق قبل وبعد: كيف يحمي التغليف الأوروبي لرويال موفرز الأقمشة المخملية والأرجل المذهبة',
+    titleEn: 'Before & After Protection: Shielding Delicate Velvet Fabrics & Gold Legs',
+    badgeAr: 'قبل وبعد التغليف (درع أمان) ✨',
+    badgeEn: 'Before & After Protection ✨',
+  },
+  {
+    type: 'image',
+    src: '/assets/images/royal_winch_villa.webp',
+    width: 800,
+    height: 597,
+    titleAr: 'تجهيزات متكاملة لنقل أثاث الفلل والكمبوندات الراقية بأعلى درجات الدقة والهدوء',
+    titleEn: 'Full Relocation Support for Luxury Compound Villas',
+    badgeAr: 'خدمة الفلل والكمبوندات 🏰',
+    badgeEn: 'Compound Villas VIP 🏰',
+  },
+  {
     type: 'video',
     src: '/assets/aistudio/VID-20261029-WA0025_08d54593.mp4',
-    titleAr: 'فيديو حي ومباشر: ونش شِلها الهيدروليكي ينزل المنقولات بسلاسة وأمان تام',
-    titleEn: 'Live Field Video: Shilha Hydraulic Winch Safely Lowering Furniture',
-    badgeAr: 'فيديو ونش حي من الواقع 🎥',
-    badgeEn: 'Live Winch Field Video 🎥',
+    poster: '/assets/optimized/hydraulic_winch_building.webp',
+    titleAr: 'فيديو ميداني: تنزيل القطع الكبيرة والثقيلة بسلاسة وأمان تام أثناء النقل الشامل',
+    titleEn: 'Live Field Video: Safely Lowering Heavy Pieces During Full Relocation',
+    badgeAr: 'توثيق ميداني للرفع الآمن 🎥',
+    badgeEn: 'Live Field Video 🎥',
   },
   {
     type: 'image',
-    src: '/assets/aistudio/FB_IMG_1793372096933_b1d91a1d.jpg',
-    titleAr: 'ونش رفع وتنزيل الأثاث الهيدروليكي ممتد لواجهة العمارة بالدور السادس بأمان مطلق',
-    titleEn: 'Truck-Mounted Hydraulic Crane Extended to 6th Floor Balcony',
-    badgeAr: 'ونش هيدروليكي يبدأ من 1700ج',
-    badgeEn: 'Hydraulic Winch from 1700 EGP',
-  },
-  {
-    type: 'image',
-    src: '/assets/aistudio/IMG-20261029-WA0010_1__f198d94c.jpg',
-    titleAr: 'طاقم عمل شِلها الثلاثي المتخصص أثناء إحكام تغليف كنب الصالون بالاسترتش والبابلز',
-    titleEn: 'Shilha 3-Man Specialist Crew Wrapping Luxury Sofa with Stretch & Bubble',
-    badgeAr: 'فريق التغليف المتخصص',
-    badgeEn: 'Specialist Packing Crew',
-  },
-  {
-    type: 'image',
-    src: '/assets/aistudio/FB_IMG_1793372087782_e1c10367.jpg',
-    titleAr: 'صندوق سيارة شِلها المبطن والمدعم بشرائح خشبية سويدي وأحزمة ربط لحماية العفش',
-    titleEn: 'Padded Truck Cargo Bed with Solid Wood Battens & Safety Straps',
-    badgeAr: 'سيارات نقل مجهزة ومبطنة',
-    badgeEn: 'Equipped Padded Trucks',
-  },
-  {
-    type: 'image',
-    src: '/assets/aistudio/IMG-20261029-WA0039_a33b1140.jpg',
-    titleAr: 'توثيق قبل وبعد: كيف يحمي التغليف الاحترافي لشِلها الأقمشة المخملية والأرجل المذهبة',
-    titleEn: 'Before & After Protection: Shielding Delicate Velvet Fabrics & Gold Legs',
-    badgeAr: 'قبل وبعد التغليف (درع أمان)',
-    badgeEn: 'Before & After Protection',
-  },
-  {
-    type: 'image',
-    src: '/assets/aistudio/FB_IMG_1793372243785_978ce9bc.jpg',
-    titleAr: 'مخزن خامات التغليف المعتمدة: كراتين 5 راق جديدة، رولات بابلز الفيروز، وشنط قماشية',
-    titleEn: 'Packaging Materials Warehouse: 5-Ply Boxes, Heavy Bubble Rolls & Bags',
-    badgeAr: 'خامات ومواد تغليف أصلية',
-    badgeEn: 'Original Packing Materials',
+    src: '/assets/optimized/hydraulic_winch_building.webp',
+    width: 720,
+    height: 956,
+    titleAr: 'توافر الأوناش الهيدروليكية عند الحاجة ضمن باقات النقل المتكاملة للواجهات والأدوار العليا',
+    titleEn: 'Hydraulic Winch Support Available Within Full Relocation Packages',
+    badgeAr: 'حلول رفع للقطع الثقيلة 🛡️',
+    badgeEn: 'Heavy Piece Lift Support 🛡️',
   },
 ];
 
 export const HeroMediaSlider: React.FC = () => {
-  const { t, lang, theme } = useApp();
+  const { t, lang } = useApp();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasSlid, setHasSlid] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(true);
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
@@ -77,6 +114,7 @@ export const HeroMediaSlider: React.FC = () => {
     if (isPaused) return;
 
     timerRef.current = setInterval(() => {
+      setHasSlid(true);
       setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
     }, 4800);
 
@@ -99,10 +137,12 @@ export const HeroMediaSlider: React.FC = () => {
   }, [currentIndex, isVideoPlaying]);
 
   const handleNext = () => {
+    setHasSlid(true);
     setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
   };
 
   const handlePrev = () => {
+    setHasSlid(true);
     setCurrentIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
   };
 
@@ -155,17 +195,13 @@ export const HeroMediaSlider: React.FC = () => {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       role="region"
-      aria-label={t('معرض صور وفيديو شِلها', 'Shilha Media Showcase')}
+      aria-label={t('معرض صور وفيديو رويال موفرز', 'Shilha Media Showcase')}
     >
       {/* Soothing Royal Blue Glow Behind the Media Card */}
       <div className="absolute -inset-1.5 bg-gradient-to-tr from-blue-600 via-sky-400 to-cyan-300 rounded-3xl blur-md opacity-50 group-hover:opacity-90 transition duration-700 pointer-events-none" />
 
       {/* Main Media Container */}
-      <div
-        className={`relative rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-300 ${
-          theme === 'light' ? 'bg-white border-slate-200' : 'bg-[#051530] border-blue-800/80'
-        }`}
-      >
+      <div className="relative rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-300 bg-[#051530] border-blue-800/80">
         {/* Horizontal Sliding Carousel Track */}
         <div
           className="relative h-[440px] sm:h-[500px] lg:h-[540px] w-full overflow-hidden bg-slate-950"
@@ -181,52 +217,100 @@ export const HeroMediaSlider: React.FC = () => {
             }}
           >
             {SLIDES.map((slide, idx) => {
+              const isActive = idx === currentIndex;
+              const shouldRenderMedia = hasSlid
+                ? idx === 0 ||
+                  isActive ||
+                  idx === (currentIndex + 1) % SLIDES.length ||
+                  idx === (currentIndex - 1 + SLIDES.length) % SLIDES.length
+                : idx === 0;
+
               return (
                 <div
                   key={idx}
                   className="w-full h-full flex-shrink-0 relative overflow-hidden bg-slate-950 select-none"
-                  aria-hidden={idx !== currentIndex}
+                  aria-hidden={!isActive}
                 >
                   {slide.type === 'video' ? (
                     <div className="relative w-full h-full bg-black flex items-center justify-center">
-                      <video
-                        ref={videoRef}
-                        src={slide.src}
-                        muted={isVideoMuted}
-                        loop
-                        playsInline
-                        autoPlay
-                        className="w-full h-full object-cover object-center"
-                      />
-                      {/* Video Audio & Play Controls Overlay */}
-                      <div className="absolute bottom-20 left-4 z-30 flex items-center gap-2" dir="ltr">
-                        <button
-                          type="button"
-                          onClick={toggleVideoPlayback}
-                          className="p-2 rounded-xl bg-slate-900/85 hover:bg-blue-600 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
-                          title={isVideoPlaying ? t('إيقاف مؤقت', 'Pause') : t('تشغيل', 'Play')}
-                          aria-label="Toggle play"
-                        >
-                          {isVideoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={toggleVideoSound}
-                          className="p-2 rounded-xl bg-slate-900/85 hover:bg-blue-600 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
-                          title={isVideoMuted ? t('تشغيل الصوت', 'Unmute') : t('كتم الصوت', 'Mute')}
-                          aria-label="Toggle mute"
-                        >
-                          {isVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                        </button>
-                      </div>
+                      {isActive ? (
+                        <>
+                          <video
+                            ref={videoRef}
+                            src={slide.src}
+                            poster={slide.poster || '/assets/optimized/hydraulic_winch_building.webp'}
+                            preload="metadata"
+                            muted={isVideoMuted}
+                            loop
+                            playsInline
+                            autoPlay
+                            className="w-full h-full object-cover object-center"
+                          />
+                          {/* Video Audio & Play Controls Overlay (only rendered when active to satisfy aria-hidden-focus) */}
+                          <div className="absolute bottom-20 left-4 z-30 flex items-center gap-2" dir="ltr">
+                            <button
+                              type="button"
+                              onClick={toggleVideoPlayback}
+                              className="p-2 rounded-xl bg-slate-900/85 hover:bg-blue-700 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
+                              title={isVideoPlaying ? t('إيقاف مؤقت', 'Pause') : t('تشغيل', 'Play')}
+                              aria-label={isVideoPlaying ? t('إيقاف الفيديو مؤقتاً', 'Pause video') : t('تشغيل الفيديو', 'Play video')}
+                            >
+                              {isVideoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={toggleVideoSound}
+                              className="p-2 rounded-xl bg-slate-900/85 hover:bg-blue-700 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
+                              title={isVideoMuted ? t('تشغيل الصوت', 'Unmute') : t('كتم الصوت', 'Mute')}
+                              aria-label={isVideoMuted ? t('تشغيل الصوت', 'Unmute video') : t('كتم الصوت', 'Mute video')}
+                            >
+                              {isVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                            </button>
+                          </div>
+                        </>
+                      ) : shouldRenderMedia ? (
+                        <img
+                          src={slide.poster || '/assets/optimized/hydraulic_winch_building.webp'}
+                          alt={t(slide.titleAr, slide.titleEn)}
+                          width={720}
+                          height={956}
+                          className="w-full h-full object-cover object-center"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-slate-950" />
+                      )}
                     </div>
+                  ) : shouldRenderMedia ? (
+                    slide.mobileSrc ? (
+                      <picture className="block w-full h-full">
+                        <source media="(max-width: 768px)" srcSet={slide.mobileSrc} type="image/webp" />
+                        <img
+                          src={slide.src}
+                          alt={t(slide.titleAr, slide.titleEn)}
+                          width={slide.width}
+                          height={slide.height}
+                          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out"
+                          loading={idx === 0 ? 'eager' : 'lazy'}
+                          fetchPriority={idx === 0 ? 'high' : 'low'}
+                          decoding={idx === 0 ? 'sync' : 'async'}
+                        />
+                      </picture>
+                    ) : (
+                      <img
+                        src={slide.src}
+                        alt={t(slide.titleAr, slide.titleEn)}
+                        width={slide.width}
+                        height={slide.height}
+                        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out"
+                        loading={idx === 0 ? 'eager' : 'lazy'}
+                        fetchPriority={idx === 0 ? 'high' : 'low'}
+                        decoding={idx === 0 ? 'sync' : 'async'}
+                      />
+                    )
                   ) : (
-                    <img
-                      src={slide.src}
-                      alt={t(slide.titleAr, slide.titleEn)}
-                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-out"
-                      loading={idx === 0 ? 'eager' : 'lazy'}
-                    />
+                    <div className="w-full h-full bg-slate-950" />
                   )}
 
                   {/* Soft gradient shadow overlay for comfortable readability */}
@@ -236,23 +320,23 @@ export const HeroMediaSlider: React.FC = () => {
             })}
           </div>
 
-          {/* Top Floating Badges */}
-          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
-            <div className="bg-slate-950/85 backdrop-blur-md border border-sky-400/40 rounded-xl px-3 py-1.5 flex items-center gap-2 shadow-lg">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-bold text-white">
+          {/* Top Floating Badges (single flex row prevents mobile overlap) */}
+          <div className="absolute top-3 inset-x-3 sm:top-4 sm:inset-x-4 z-20 flex items-center justify-between gap-2 pointer-events-none">
+            <div className="min-w-0 bg-slate-950/85 backdrop-blur-md border border-sky-400/40 rounded-xl px-2.5 sm:px-3 py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-lg">
+              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 shrink-0 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+              <span className="text-[11px] sm:text-xs font-bold text-white truncate">
                 {t(currentSlide.badgeAr, currentSlide.badgeEn)}
               </span>
             </div>
-          </div>
 
-          <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5">
-            <div className="bg-blue-600/90 backdrop-blur-md text-white font-black rounded-xl px-2.5 py-1 text-xs flex items-center gap-1 shadow-md border border-blue-400/30">
-              <Star className="w-3.5 h-3.5 fill-current text-sky-200" />
-              <span>4.9 / 5</span>
-            </div>
-            <div className="bg-slate-950/70 backdrop-blur-md text-slate-300 font-mono text-xs px-2 py-1 rounded-xl border border-white/10">
-              {currentIndex + 1} / {SLIDES.length}
+            <div className="shrink-0 flex items-center gap-1.5">
+              <div className="bg-blue-700/95 backdrop-blur-md text-white font-black rounded-xl px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs flex items-center gap-1 shadow-md border border-blue-400/30 whitespace-nowrap">
+                <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current text-sky-200 shrink-0" aria-hidden="true" />
+                <span>4.9 / 5</span>
+              </div>
+              <div className="bg-slate-950/85 backdrop-blur-md text-slate-200 font-mono text-[11px] sm:text-xs px-2 py-1 rounded-xl border border-white/15 whitespace-nowrap">
+                {currentIndex + 1} / {SLIDES.length}
+              </div>
             </div>
           </div>
 
@@ -286,37 +370,41 @@ export const HeroMediaSlider: React.FC = () => {
               {t(currentSlide.titleAr, currentSlide.titleEn)}
             </p>
 
-            {/* Visual Progress Dots Bar */}
-            <div className="flex items-center justify-center gap-1.5 pt-1">
+            {/* Visual Progress Dots Bar with WCAG 2.2 compliant >=28px touch targets */}
+            <div className="flex items-center justify-center gap-0.5 pt-1">
               {SLIDES.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    idx === currentIndex
-                      ? 'w-8 bg-gradient-to-r from-sky-400 to-cyan-300 shadow-[0_0_8px_rgba(56,189,248,0.8)]'
-                      : 'w-2 bg-slate-600/70 hover:bg-slate-400'
-                  }`}
-                  aria-label={`Slide ${idx + 1}`}
-                />
+                  onClick={() => {
+                    setHasSlid(true);
+                    setCurrentIndex(idx);
+                  }}
+                  className="min-w-[28px] min-h-[28px] p-2.5 flex items-center justify-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400 rounded-full"
+                  aria-label={t(`الشريحة رقم ${idx + 1}`, `Slide ${idx + 1}`)}
+                  aria-current={idx === currentIndex ? 'true' : undefined}
+                >
+                  <span
+                    className={`block h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentIndex
+                        ? 'w-7 bg-gradient-to-r from-sky-400 to-cyan-300 shadow-[0_0_8px_rgba(56,189,248,0.8)]'
+                        : 'w-2 bg-slate-500 hover:bg-slate-300'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>
         </div>
 
         {/* Card Lower Quick Strip */}
-        <div
-          className={`p-3.5 border-t space-y-2 transition-colors ${
-            theme === 'light' ? 'bg-slate-50 border-slate-200' : 'bg-[#030d20] border-blue-900/60'
-          }`}
-        >
-          <div className="flex items-center justify-between text-xs text-slate-400">
-            <span className="flex items-center gap-1 font-bold text-sky-600">
-              <ShieldCheck className="w-4 h-4 text-sky-500" />
-              {t('عناية تامة واحترافية بالمنقولات', 'Professional Care for All Belongings')}
+        <div className="p-3.5 border-t space-y-2 transition-colors bg-[#030d20] border-blue-900/60">
+          <div className="flex items-center justify-between text-xs text-slate-300">
+            <span className="flex items-center gap-1 font-bold text-amber-300">
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+              {t('عناية فائقة وتغليف أوروبي لحماية التحف والأثاث', 'White-Glove Care & European Packing')}
             </span>
-            <span className="text-emerald-500 font-bold">{t('متاح 24 ساعة', 'Available 24/7')}</span>
+            <span className="text-emerald-400 font-bold">{t('متاح 24 ساعة', 'Available 24/7')}</span>
           </div>
         </div>
       </div>

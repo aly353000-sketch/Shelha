@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auraglow Stickers — Individual Roll Print PDF (22 Pages, 1:1 mm)</title>
+  <style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap');
+
+  .ag-sticker {
+    position: relative;
+    box-sizing: border-box;
+    background: var(--c-bg);
+    color: var(--c-text);
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .ag-sticker *, .ag-sticker *::before, .ag-sticker *::after {
+    box-sizing: border-box;
+  }
+
+  .ag-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 0.45mm solid var(--c-border);
+    background: linear-gradient(180deg, var(--c-tint) 0%, var(--c-bg) 38%, var(--c-bg) 100%);
+  }
+
+  .ag-frame::after {
+    content: '';
+    position: absolute;
+    inset: 1.05mm;
+    border: 0.22mm solid var(--c-border);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .ag-logo {
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.38mm solid var(--c-border);
+    background: #95ab8c;
+    flex-shrink: 0;
+  }
+
+  .ag-artwork {
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+  .ag-art-multiply {
+    mix-blend-mode: multiply;
+  }
+  .ag-art-screen {
+    mix-blend-mode: screen;
+  }
+
+  .ag-ltr-inline {
+    display: inline-block;
+    direction: ltr;
+    unicode-bidi: isolate;
+    white-space: nowrap;
+  }
+
+  .ag-hero-lockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ag-lockup-sep {
+    width: 0.24mm;
+    background: linear-gradient(180deg, transparent 0%, var(--c-border) 25%, var(--c-accent) 50%, var(--c-border) 75%, transparent 100%);
+    opacity: 0.65;
+    flex-shrink: 0;
+  }
+
+  .ag-divider {
+    height: 0.25mm;
+    width: 100%;
+    background: linear-gradient(90deg, transparent 0%, var(--c-border) 20%, var(--c-accent) 50%, var(--c-border) 80%, transparent 100%);
+    opacity: 0.7;
+  }
+
+  .ag-sec-head {
+    font-weight: 800;
+    color: var(--c-accent);
+    line-height: 1.15;
+  }
+
+  .ag-ing-text {
+    font-family: 'Cairo', sans-serif;
+    color: var(--c-muted);
+    line-height: 1.24;
+    text-align: left;
+  }
+
+  .ag-usage-text {
+    color: var(--c-text);
+    line-height: 1.28;
+  }
+
+  .ag-foot-bar {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2mm;
+    border-top: 0.25mm solid var(--c-border);
+    padding-top: 1.1mm;
+  }
+
+  .ag-foot-tagline {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-weight: 700;
+    color: var(--c-accent);
+    white-space: nowrap;
+  }
+
+  .ag-foot-meta {
+    font-weight: 800;
+    color: var(--c-deep);
+    white-space: nowrap;
+  }
+
+  /* ---- TALL LARGE (80x110, 90x120, 100x110 mm) ---- */
+  .ag-tpl-tall-large .ag-tall-body {
+    display: flex;
+    flex-direction: column;
+    padding: 3.1mm 4.1mm 2.8mm;
+    gap: 1.45mm;
+  }
+  .ag-tpl-tall-large .ag-top-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.9mm;
+    background: var(--c-accent);
+  }
+  .ag-tpl-tall-large .ag-tall-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 0.6mm;
+  }
+  .ag-tpl-tall-large .ag-hero-lockup {
+    gap: 3mm;
+    margin-bottom: 0.9mm;
+  }
+  .ag-tpl-tall-large .ag-lockup-sep {
+    height: 21mm;
+  }
+  .ag-tpl-tall-large .ag-logo {
+    width: 28.5mm;
+    height: 28.5mm;
+  }
+  .ag-tpl-tall-large .ag-artwork {
+    width: 29.5mm;
+    height: 29.5mm;
+  }
+  .ag-tpl-tall-large.ag-wide-tall .ag-hero-lockup {
+    gap: 4mm;
+  }
+  .ag-tpl-tall-large.ag-wide-tall .ag-logo {
+    width: 31.5mm;
+    height: 31.5mm;
+  }
+  .ag-tpl-tall-large.ag-wide-tall .ag-artwork {
+    width: 33mm;
+    height: 33mm;
+  }
+  .ag-tpl-tall-large .ag-brand-kicker {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+    margin-bottom: 0.2mm;
+  }
+  .ag-tpl-tall-large .ag-tall-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 15.5pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.22;
+  }
+  .ag-tpl-tall-large.ag-wide-tall .ag-tall-title {
+    font-size: 17pt;
+  }
+  .ag-tpl-tall-large .ag-tall-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 10.6pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.15;
+    margin-top: 0.15mm;
+  }
+  .ag-tpl-tall-large.ag-wide-tall .ag-tall-title-en {
+    font-size: 11.8pt;
+  }
+  .ag-tpl-tall-large .ag-tall-sub {
+    font-size: 6.9pt;
+    font-weight: 700;
+    color: var(--c-muted);
+    line-height: 1.2;
+    margin-top: 0.35mm;
+  }
+  .ag-tpl-tall-large .ag-tall-desc {
+    font-size: 6.8pt;
+    line-height: 1.38;
+    text-align: center;
+    color: var(--c-text);
+  }
+  .ag-tpl-tall-large .ag-tall-section {
+    background: rgba(255, 255, 255, 0.58);
+    border: 0.22mm solid var(--c-border);
+    padding: 1.65mm 2.3mm;
+  }
+  .ag-tpl-tall-large .ag-sec-head { font-size: 6.8pt; margin-bottom: 0.55mm; }
+  .ag-tpl-tall-large .ag-ing-text { font-size: 6pt; line-height: 1.26; }
+  .ag-tpl-tall-large .ag-usage-text { font-size: 6.7pt; line-height: 1.3; }
+  .ag-tpl-tall-large .ag-foot-tagline { font-size: 8.2pt; }
+  .ag-tpl-tall-large .ag-foot-meta { font-size: 6.7pt; }
+
+  /* ---- TALL MEDIUM (60x90, 70x80, 70x90, 80x90 mm) ---- */
+  .ag-tpl-tall-medium .ag-tall-body {
+    display: flex;
+    flex-direction: column;
+    padding: 2mm 2.7mm 1.9mm;
+    gap: 0.85mm;
+  }
+  .ag-tpl-tall-medium .ag-top-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.3mm;
+    background: var(--c-accent);
+  }
+  .ag-tpl-tall-medium .ag-tall-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 0.35mm;
+  }
+  .ag-tpl-tall-medium .ag-hero-lockup {
+    gap: 2.1mm;
+    margin-bottom: 0.5mm;
+  }
+  .ag-tpl-tall-medium .ag-lockup-sep {
+    height: 15mm;
+  }
+  .ag-tpl-tall-medium .ag-logo {
+    width: 19.5mm;
+    height: 19.5mm;
+  }
+  .ag-tpl-tall-medium .ag-artwork {
+    width: 20.5mm;
+    height: 20.5mm;
+  }
+  .ag-tpl-tall-medium .ag-brand-kicker {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+  .ag-tpl-tall-medium .ag-tall-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 10.6pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.2;
+    margin-top: 0.1mm;
+  }
+  .ag-tpl-tall-medium .ag-tall-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.12;
+  }
+  .ag-tpl-tall-medium .ag-tall-sub {
+    font-size: 5.1pt;
+    font-weight: 700;
+    color: var(--c-muted);
+    line-height: 1.15;
+    margin-top: 0.15mm;
+  }
+  .ag-tpl-tall-medium .ag-tall-desc {
+    font-size: 5.1pt;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--c-text);
+  }
+  .ag-tpl-tall-medium .ag-tall-section {
+    background: rgba(255, 255, 255, 0.56);
+    border: 0.18mm solid var(--c-border);
+    padding: 0.85mm 1.45mm;
+  }
+  .ag-tpl-tall-medium .ag-sec-head { font-size: 5pt; margin-bottom: 0.3mm; }
+  .ag-tpl-tall-medium .ag-ing-text { font-size: 4.65pt; line-height: 1.16; }
+  .ag-tpl-tall-medium .ag-usage-text { font-size: 4.95pt; line-height: 1.2; }
+  .ag-tpl-tall-medium .ag-foot-tagline { font-size: 6.2pt; }
+  .ag-tpl-tall-medium .ag-foot-meta { font-size: 4.9pt; }
+
+  .ag-tpl-tall-medium.ag-narrow .ag-hero-lockup { gap: 1.5mm; }
+  .ag-tpl-tall-medium.ag-narrow .ag-logo { width: 18mm; height: 18mm; }
+  .ag-tpl-tall-medium.ag-narrow .ag-artwork { width: 18.8mm; height: 18.8mm; }
+  .ag-tpl-tall-medium.ag-narrow .ag-tall-title { font-size: 9.8pt; }
+  .ag-tpl-tall-medium.ag-narrow .ag-tall-title-en { font-size: 7pt; }
+  .ag-tpl-tall-medium.ag-narrow .ag-tall-sub { font-size: 4.75pt; }
+  .ag-tpl-tall-medium.ag-narrow .ag-foot-tagline { font-size: 5.6pt; }
+  .ag-tpl-tall-medium.ag-narrow .ag-foot-meta { font-size: 4.55pt; }
+
+  .ag-tpl-tall-medium.ag-short .ag-tall-body { padding: 1.8mm 2.5mm 1.65mm; gap: 0.62mm; }
+  .ag-tpl-tall-medium.ag-short .ag-logo { width: 18mm; height: 18mm; }
+  .ag-tpl-tall-medium.ag-short .ag-artwork { width: 18.5mm; height: 18.5mm; }
+  .ag-tpl-tall-medium.ag-short .ag-tall-title { font-size: 10pt; }
+  .ag-tpl-tall-medium.ag-short .ag-tall-title-en { font-size: 7.2pt; }
+  .ag-tpl-tall-medium.ag-short .ag-tall-desc { font-size: 4.85pt; line-height: 1.2; }
+  .ag-tpl-tall-medium.ag-short .ag-ing-text { font-size: 4.5pt; line-height: 1.14; }
+  .ag-tpl-tall-medium.ag-short .ag-usage-text { font-size: 4.75pt; line-height: 1.16; }
+
+  /* ---- TALL COMPACT (40x60 mm — Hand Cream) ---- */
+  .ag-tpl-tall-compact .ag-frame::after { inset: 0.75mm; }
+  .ag-tpl-tall-compact .ag-tc-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5mm 1.8mm 1.4mm;
+    gap: 0.5mm;
+  }
+  .ag-tpl-tall-compact .ag-tc-visuals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3mm;
+  }
+  .ag-tpl-tall-compact .ag-logo { width: 13.8mm; height: 13.8mm; }
+  .ag-tpl-tall-compact .ag-artwork { width: 14.2mm; height: 14.2mm; }
+  .ag-tpl-tall-compact .ag-tc-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.15;
+  }
+  .ag-tpl-tall-compact .ag-tc-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 6.5pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.08;
+  }
+  .ag-tpl-tall-compact .ag-tc-sub { font-size: 4.45pt; font-weight: 700; color: var(--c-muted); line-height: 1.12; }
+  .ag-tpl-tall-compact .ag-tc-desc { font-size: 4.35pt; line-height: 1.2; color: var(--c-text); }
+  .ag-tpl-tall-compact .ag-tc-ing { font-size: 3.95pt; line-height: 1.14; color: var(--c-muted); text-align: center; }
+  .ag-tpl-tall-compact .ag-tc-usage { font-size: 4.25pt; line-height: 1.16; color: var(--c-text); }
+  .ag-tpl-tall-compact .ag-tc-foot {
+    margin-top: auto;
+    width: 100%;
+    border-top: 0.2mm solid var(--c-border);
+    padding-top: 0.55mm;
+    font-size: 4.4pt;
+    font-weight: 800;
+    color: var(--c-deep);
+    line-height: 1.18;
+  }
+  .ag-tpl-tall-compact .ag-tc-tag {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    color: var(--c-accent);
+    font-weight: 700;
+    font-size: 5.2pt;
+  }
+
+  /* ---- SQUARE (70x70 mm — Sunscreen SPF 70+) ---- */
+  .ag-tpl-square .ag-sq-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1.8mm 2.5mm 1.65mm;
+    gap: 0.55mm;
+  }
+  .ag-tpl-square .ag-sq-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.15mm;
+  }
+  .ag-tpl-square .ag-hero-lockup {
+    gap: 2.1mm;
+    margin-bottom: 0.15mm;
+  }
+  .ag-tpl-square .ag-lockup-sep {
+    height: 13mm;
+  }
+  .ag-tpl-square .ag-logo { width: 16.4mm; height: 16.4mm; }
+  .ag-tpl-square .ag-artwork { width: 16.4mm; height: 16.4mm; }
+  .ag-tpl-square .ag-sq-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  .ag-tpl-square .ag-sq-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .ag-tpl-square .ag-sq-sub { font-size: 4.75pt; font-weight: 700; color: var(--c-muted); line-height: 1.12; white-space: nowrap; }
+  .ag-tpl-square .ag-sq-desc { font-size: 4.8pt; line-height: 1.2; color: var(--c-text); text-align: center; }
+  .ag-tpl-square .ag-sec-head { font-size: 4.85pt; }
+  .ag-tpl-square .ag-ing-text { font-size: 4.5pt; line-height: 1.14; }
+  .ag-tpl-square .ag-usage-text { font-size: 4.8pt; line-height: 1.16; }
+  .ag-tpl-square .ag-foot-tagline { font-size: 5.9pt; }
+  .ag-tpl-square .ag-foot-meta { font-size: 4.85pt; }
+
+  /* ---- WIDE JAR (100x50 mm — Repair Hair Mask 500g) ---- */
+  .ag-tpl-wide-jar .ag-wide-grid {
+    display: grid;
+    grid-template-columns: 44.5mm 1fr;
+    align-items: stretch;
+    padding: 1.85mm 2.3mm;
+    gap: 2.1mm;
+  }
+  .ag-tpl-wide-jar .ag-wide-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-left: 0.25mm solid var(--c-border);
+    padding-left: 1.9mm;
+    gap: 0.3mm;
+  }
+  .ag-tpl-wide-jar .ag-wide-visuals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.7mm;
+  }
+  .ag-tpl-wide-jar .ag-logo { width: 18mm; height: 18mm; }
+  .ag-tpl-wide-jar .ag-artwork { width: 17.8mm; height: 17.8mm; }
+  .ag-tpl-wide-jar .ag-wide-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 10.8pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.18;
+  }
+  .ag-tpl-wide-jar .ag-wide-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.1;
+  }
+  .ag-tpl-wide-jar .ag-wide-sub { font-size: 4.8pt; font-weight: 700; color: var(--c-muted); line-height: 1.14; }
+  .ag-tpl-wide-jar .ag-wide-tagline {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-size: 6pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    margin-top: 0.15mm;
+  }
+  .ag-tpl-wide-jar .ag-wide-footer {
+    display: flex;
+    gap: 1.2mm;
+    font-size: 5pt;
+    font-weight: 800;
+    color: var(--c-accent);
+  }
+  .ag-tpl-wide-jar .ag-wide-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7mm;
+  }
+  .ag-tpl-wide-jar .ag-wide-desc { font-size: 5.2pt; line-height: 1.22; color: var(--c-text); }
+  .ag-tpl-wide-jar .ag-sec-head { font-size: 5pt; }
+  .ag-tpl-wide-jar .ag-ing-text { font-size: 4.7pt; line-height: 1.17; }
+  .ag-tpl-wide-jar .ag-usage-text { font-size: 4.95pt; line-height: 1.2; }
+
+  /* ---- ULTRA-SLIM JAR BAND (140x20 mm — 6 jar products) ---- */
+  .ag-tpl-slim-band .ag-frame::after { inset: 0.65mm; }
+  .ag-tpl-slim-band .ag-slim-grid {
+    display: grid;
+    grid-template-columns: 18.5mm 50mm 17.8mm 1fr;
+    align-items: center;
+    padding: 1.05mm 1.9mm;
+    gap: 1.45mm;
+  }
+  .ag-tpl-slim-band .ag-slim-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 0.22mm solid var(--c-border);
+    padding-left: 1.3mm;
+    height: 100%;
+  }
+  .ag-tpl-slim-band .ag-logo { width: 15.8mm; height: 15.8mm; }
+  .ag-tpl-slim-band .ag-slim-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 0.22mm solid var(--c-border);
+    padding-left: 1.4mm;
+    height: 100%;
+    gap: 0.1mm;
+    min-width: 0;
+  }
+  .ag-tpl-slim-band .ag-slim-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 8.1pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.12;
+    white-space: nowrap;
+  }
+  .ag-tpl-slim-band .ag-slim-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 6.2pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.06;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .ag-tpl-slim-band .ag-slim-desc {
+    font-size: 4.1pt;
+    line-height: 1.12;
+    color: var(--c-text);
+  }
+  .ag-tpl-slim-band .ag-slim-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8mm;
+    font-size: 4.15pt;
+    font-weight: 800;
+    color: var(--c-accent);
+    white-space: nowrap;
+  }
+  .ag-tpl-slim-band .ag-slim-tag {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-size: 4.85pt;
+    font-weight: 700;
+    color: var(--c-deep);
+  }
+  .ag-tpl-slim-band .ag-slim-art-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 0.22mm solid var(--c-border);
+    padding-left: 1.15mm;
+    height: 100%;
+  }
+  .ag-tpl-slim-band .ag-artwork {
+    width: 15.6mm;
+    height: 15.6mm;
+  }
+  .ag-tpl-slim-band .ag-slim-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35mm;
+    min-width: 0;
+  }
+  .ag-tpl-slim-band .ag-slim-ing {
+    font-size: 4pt;
+    line-height: 1.13;
+    color: var(--c-muted);
+  }
+  .ag-tpl-slim-band .ag-slim-usage {
+    font-size: 4.2pt;
+    line-height: 1.15;
+    color: var(--c-text);
+  }
+  .ag-tpl-slim-band .ag-ar-lbl {
+    color: var(--c-accent);
+    font-weight: 800;
+  }
+
+  /* ---- MINI LANDSCAPE (60x40 mm — Obsidian & Gold Serum) ---- */
+  .ag-tpl-mini-landscape .ag-frame {
+    background: linear-gradient(135deg, var(--c-tint) 0%, var(--c-bg) 100%);
+  }
+  .ag-tpl-mini-landscape .ag-frame::after { inset: 0.8mm; }
+  .ag-tpl-mini-landscape .ag-minil-grid {
+    display: grid;
+    grid-template-columns: 28mm 1fr;
+    align-items: stretch;
+    padding: 1.55mm 1.85mm;
+    gap: 1.45mm;
+  }
+  .ag-tpl-mini-landscape .ag-minil-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-left: 0.22mm solid var(--c-border);
+    padding-left: 1.35mm;
+    gap: 0.22mm;
+  }
+  .ag-tpl-mini-landscape .ag-minil-visuals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5mm;
+  }
+  .ag-tpl-mini-landscape .ag-logo { width: 13.8mm; height: 13.8mm; border-color: var(--c-accent); }
+  .ag-tpl-mini-landscape .ag-artwork { width: 11mm; height: 11mm; }
+  .ag-tpl-mini-landscape .ag-minil-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 8.3pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.15;
+  }
+  .ag-tpl-mini-landscape .ag-minil-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 6pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.08;
+    white-space: nowrap;
+  }
+  .ag-tpl-mini-landscape .ag-minil-sub { font-size: 4pt; color: var(--c-muted); line-height: 1.12; }
+  .ag-tpl-mini-landscape .ag-minil-meta { font-size: 4.3pt; font-weight: 800; color: var(--c-accent); margin-top: 0.15mm; }
+  .ag-tpl-mini-landscape .ag-minil-tagline {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-size: 4.9pt;
+    font-weight: 700;
+    color: var(--c-text);
+  }
+  .ag-tpl-mini-landscape .ag-minil-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5mm;
+  }
+  .ag-tpl-mini-landscape .ag-minil-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.45pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    text-align: left;
+  }
+  .ag-tpl-mini-landscape .ag-minil-ing {
+    font-size: 4pt;
+    line-height: 1.15;
+    color: var(--c-muted);
+    text-align: left;
+  }
+  .ag-tpl-mini-landscape .ag-minil-head-ar {
+    font-size: 4.4pt;
+    font-weight: 800;
+    color: var(--c-accent);
+    margin-top: 0.2mm;
+  }
+  .ag-tpl-mini-landscape .ag-minil-usage {
+    font-size: 4.2pt;
+    line-height: 1.18;
+    color: var(--c-text);
+  }
+
+  /* ---- MINI SQUARE (40x40 mm — Lip Balm Stick) ---- */
+  .ag-tpl-mini-square .ag-frame::after { inset: 0.7mm; }
+  .ag-tpl-mini-square .ag-minisq-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.25mm 1.5mm;
+    gap: 0.24mm;
+  }
+  .ag-tpl-mini-square .ag-minisq-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1mm;
+  }
+  .ag-tpl-mini-square .ag-logo { width: 12.6mm; height: 12.6mm; }
+  .ag-tpl-mini-square .ag-artwork { width: 12.6mm; height: 12.6mm; }
+  .ag-tpl-mini-square .ag-minisq-title {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 8.2pt;
+    font-weight: 700;
+    color: var(--c-deep);
+    line-height: 1.12;
+  }
+  .ag-tpl-mini-square .ag-minisq-title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5.8pt;
+    font-weight: 700;
+    color: var(--c-accent);
+    line-height: 1.06;
+    white-space: nowrap;
+  }
+  .ag-tpl-mini-square .ag-minisq-desc { font-size: 4.05pt; line-height: 1.12; color: var(--c-text); }
+  .ag-tpl-mini-square .ag-minisq-ing { font-size: 3.75pt; line-height: 1.1; color: var(--c-muted); }
+  .ag-tpl-mini-square .ag-minisq-foot { font-size: 4.15pt; font-weight: 800; color: var(--c-deep); margin-top: 0.12mm; }
+  .ag-tpl-mini-square .ag-minisq-tag {
+    font-family: 'Aref Ruqaa', 'Cairo', serif;
+    font-size: 4.9pt;
+    font-weight: 700;
+    color: var(--c-accent);
+  }
+
+    @page ag_roll_0 { size: 80mm 110mm; margin: 0; }
+    @page ag_roll_1 { size: 90mm 120mm; margin: 0; }
+    @page ag_roll_2 { size: 100mm 50mm; margin: 0; }
+    @page ag_roll_3 { size: 140mm 20mm; margin: 0; }
+    @page ag_roll_4 { size: 140mm 20mm; margin: 0; }
+    @page ag_roll_5 { size: 70mm 80mm; margin: 0; }
+    @page ag_roll_6 { size: 70mm 90mm; margin: 0; }
+    @page ag_roll_7 { size: 70mm 90mm; margin: 0; }
+    @page ag_roll_8 { size: 60mm 90mm; margin: 0; }
+    @page ag_roll_9 { size: 60mm 90mm; margin: 0; }
+    @page ag_roll_10 { size: 140mm 20mm; margin: 0; }
+    @page ag_roll_11 { size: 80mm 90mm; margin: 0; }
+    @page ag_roll_12 { size: 70mm 70mm; margin: 0; }
+    @page ag_roll_13 { size: 60mm 40mm; margin: 0; }
+    @page ag_roll_14 { size: 40mm 40mm; margin: 0; }
+    @page ag_roll_15 { size: 100mm 110mm; margin: 0; }
+    @page ag_roll_16 { size: 100mm 110mm; margin: 0; }
+    @page ag_roll_17 { size: 100mm 110mm; margin: 0; }
+    @page ag_roll_18 { size: 140mm 20mm; margin: 0; }
+    @page ag_roll_19 { size: 140mm 20mm; margin: 0; }
+    @page ag_roll_20 { size: 140mm 20mm; margin: 0; }
+    @page ag_roll_21 { size: 40mm 60mm; margin: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: 'Cairo', sans-serif;
+    }
+    .roll-page {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+      background: #ffffff;
+    }
+    .roll-page:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+    .roll-page .ag-sticker {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  
+      <section class="roll-page" data-sticker-id="hair-anti-hairloss-shampoo" style="page: ag_roll_0; width:80mm; height:110mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-large   " data-id="hair-anti-hairloss-shampoo" style="width:80mm;height:110mm;--c-bg:#F6F9F4;--c-tint:#E9F1E5;--c-accent:#345E3E;--c-deep:#203E27;--c-border:#8FA885;--c-text:#1D2C20;--c-muted:#4B5E4E">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/hair-anti-hairloss-shampoo.jpg" alt="شامبو تساقط وترميم" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">شامبو تساقط وترميم</div>
+          <div class="ag-tall-title-en" dir="ltr">Anti-Hair Loss &amp; Repair Shampoo</div>
+          <div class="ag-tall-sub">خالي من السلفات · بتكنولوجيا الفايبرهانس</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">شامبو علاجي للتساقط غني بالكافيين وخلاصة الروزماري وبذور العنب؛ ينظف الفروة بلطف ويقوي البصيلات ويرمم الشعر التالف بدون تجفيف.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Caffeine · Rosemary Extract · Grape Seed Extract · Fiberhance · Disodium Lauryl Sulfosuccinate · Coco Glucoside · Decyl Glucoside · Coco Betaine · Panthenol · Polyquaternium-10 &amp; 7 · Aloe Vera Extract · Cetiol-HE · Hydrous Lanolin · Amodimethicone</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُدلك به الشعر وفروة الرأس المبللة لمدة دقيقتين مع كل استحمام ثم يُشطف جيداً بالماء.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">250 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="hair-dandruff-shampoo" style="page: ag_roll_1; width:90mm; height:120mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-large   ag-wide-tall" data-id="hair-dandruff-shampoo" style="width:90mm;height:120mm;--c-bg:#F3FAF8;--c-tint:#E2F2EE;--c-accent:#1E6B5E;--c-deep:#124940;--c-border:#7FA99C;--c-text:#162C28;--c-muted:#45645D">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/hair-dandruff-shampoo.jpg" alt="شامبو القشرة SF" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">شامبو القشرة <span class="ag-ltr-inline" dir="ltr">SF</span></div>
+          <div class="ag-tall-title-en" dir="ltr">Anti-Dandruff SF Shampoo</div>
+          <div class="ag-tall-sub">خالي من السلفات · لعلاج القشرة والوقاية منها</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">تركيبة فعالة لعلاج جميع أنواع القشرة بالبيروكتون أولامين والساليسيليك أسيد وزيت شجرة الشاي والنعناع، ينقي الفروة بانتعاش دون تجفيف الشعر.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Piroctone Olamine · Salicylic Acid · Tea Tree Oil · Peppermint Oil · Fiberhance · Disodium Lauryl Sulfosuccinate · Coco Glucoside · Decyl Glucoside · Coco Betaine · Panthenol · Polyquaternium-10 &amp; 7 · Aloe Vera Extract · Cetiol-HE · Hydrous Lanolin · Amodimethicone</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُدلك الشعر وفروة الرأس لمدة دقيقتين 3 مرات أسبوعياً للعلاج، ثم مرة أسبوعياً للوقاية.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">250 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="hair-repair-mask" style="page: ag_roll_2; width:100mm; height:50mm;">
+        
+      <div class="ag-sticker ag-tpl-wide-jar" data-id="hair-repair-mask" style="width:100mm;height:50mm;--c-bg:#FCF8F0;--c-tint:#F4EBD7;--c-accent:#94672C;--c-deep:#614118;--c-border:#B89B6A;--c-text:#2B2216;--c-muted:#64543E">
+        <div class="ag-frame ag-wide-grid">
+          <div class="ag-wide-hero">
+            <div class="ag-wide-visuals">
+              <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+              <img class="ag-artwork ag-art-multiply" src="./art/hair-repair-mask.jpg" alt="ماسك ترميم الشعر" />
+            </div>
+            <div class="ag-wide-title">ماسك ترميم الشعر</div>
+            <div class="ag-wide-title-en" dir="ltr">Intensive Repair Hair Mask</div>
+            <div class="ag-wide-sub">ترميم عميق بالزبد الطبيعية والفايبرهانس</div>
+            <div class="ag-wide-tagline">لأن جمالكِ يستحق الأفضل</div>
+            <div class="ag-wide-footer">
+              <span>500 جم</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+            </div>
+          </div>
+          <div class="ag-wide-info">
+            <div class="ag-wide-desc">وجبة غنية بالزيوت والزبد الطبيعية والبروتين والكيراتين لترميم التلف وعلاج الجفاف والهيشان المستمر.</div>
+            <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+            <div class="ag-ing-text" dir="ltr">Shea &amp; Cocoa Butter · Jojoba &amp; Squalane Oil · Coconut &amp; Pumpkin Seed Oil · Black Seed &amp; CCT Oil · Hydrolyzed Protein &amp; Keratin · Fiberhance · Panthenol · Glycerin · Lanolin · Polyquaternium-10 &amp; 7</div>
+            <div class="ag-sec-head">طريقة الاستخدام</div>
+            <div class="ag-usage-text">يوزع على الشعر المبلل بعيداً عن الفروة ويُمَشّط بمشط واسع، يُترك 20 دقيقة (يفضل فوطة ساخنة) ثم يُشطف بماء دافئ.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="hair-dry-cream" style="page: ag_roll_3; width:140mm; height:20mm;">
+        
+      <div class="ag-sticker ag-tpl-slim-band" data-id="hair-dry-cream" style="width:140mm;height:20mm;--c-bg:#FAF7F0;--c-tint:#EFE9D9;--c-accent:#59744E;--c-deep:#374C30;--c-border:#93A988;--c-text:#212D1E;--c-muted:#556550">
+        <div class="ag-frame ag-slim-grid">
+          <div class="ag-slim-brand">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+          </div>
+          <div class="ag-slim-center">
+            <div class="ag-slim-title">كريم الشعر الجاف</div>
+            <div class="ag-slim-title-en" dir="ltr">Dry Hair Styling Cream</div>
+            <div class="ag-slim-desc">يعالج الجفاف والهيشان والبهتان والتقصف بتركيبة غنية بالفايبرهانس والزيوت الطبيعية.</div>
+            <div class="ag-slim-meta">
+              <span>100 مل</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+              <span>·</span>
+              <span class="ag-slim-tag">لأن جمالكِ يستحق الأفضل</span>
+            </div>
+          </div>
+          <div class="ag-slim-art-cell">
+            <img class="ag-artwork ag-art-multiply" src="./art/hair-dry-cream.jpg" alt="كريم الشعر الجاف" />
+          </div>
+          <div class="ag-slim-details">
+            <div class="ag-slim-ing"><strong class="ag-ar-lbl">المكونات:</strong> <span dir="ltr">Jojoba &amp; Squalane Oil · Avocado &amp; Pumpkin Seed Oil · Shea Butter · Fiberhance · Panthenol · Vit. E · Glycerin · Lanolin</span></div>
+            <div class="ag-slim-usage"><strong class="ag-ar-lbl">الاستخدام:</strong> يُدهن على شعر مندي بماء خفيف مع التركيز على الأطراف.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="hair-butter-balm" style="page: ag_roll_4; width:140mm; height:20mm;">
+        
+      <div class="ag-sticker ag-tpl-slim-band" data-id="hair-butter-balm" style="width:140mm;height:20mm;--c-bg:#FDF9EE;--c-tint:#F6EBC9;--c-accent:#9C6D24;--c-deep:#6B4812;--c-border:#C6A35E;--c-text:#2B2112;--c-muted:#665336">
+        <div class="ag-frame ag-slim-grid">
+          <div class="ag-slim-brand">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+          </div>
+          <div class="ag-slim-center">
+            <div class="ag-slim-title">بالم الشعر بالزبد الطبيعية</div>
+            <div class="ag-slim-title-en" dir="ltr">Natural Butter Hair Balm</div>
+            <div class="ag-slim-desc">وجبة دسمة غنية بالزبد والزيوت الطبيعية وشمع العسل البكر لتغذية وترطيب الشعر التالف.</div>
+            <div class="ag-slim-meta">
+              <span>100 مل</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+              <span>·</span>
+              <span class="ag-slim-tag">لأن جمالكِ يستحق الأفضل</span>
+            </div>
+          </div>
+          <div class="ag-slim-art-cell">
+            <img class="ag-artwork ag-art-multiply" src="./art/hair-butter-balm.jpg" alt="بالم الشعر بالزبد الطبيعية" />
+          </div>
+          <div class="ag-slim-details">
+            <div class="ag-slim-ing"><strong class="ag-ar-lbl">المكونات:</strong> <span dir="ltr">Shea Butter · Beeswax · Jojoba &amp; Squalane Oil · Sweet Almond &amp; Pumpkin Seed Oil · Black Seed &amp; Sesame Oil · Vit. E · Lanolin</span></div>
+            <div class="ag-slim-usage"><strong class="ag-ar-lbl">الاستخدام:</strong> يُدهن على شعر مندي بماء خفيف مع التركيز على الأطراف.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="hair-thickening-oil" style="page: ag_roll_5; width:70mm; height:80mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-medium  ag-short " data-id="hair-thickening-oil" style="width:70mm;height:80mm;--c-bg:#FDF8EE;--c-tint:#F5E8CB;--c-accent:#9A6314;--c-deep:#623E0A;--c-border:#C29B4E;--c-text:#2B1F0F;--c-muted:#634E30">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/hair-thickening-oil.jpg" alt="ميكس زيوت تكثيف الشعر" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">ميكس زيوت تكثيف الشعر</div>
+          <div class="ag-tall-title-en" dir="ltr">Hair Thickening Oil Blend</div>
+          <div class="ag-tall-sub">زيوت طبيعية نقية معصورة على البارد</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">مزيج فاخر من الزيوت الطبيعية المعصورة على البارد لتقوية وتكثيف الشعر وتسهيل التصفيف بدون ملمس دهني أو تراكم.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Argan Oil · Jojoba Oil · Squalane Oil · Pumpkin Seed Oil · Grape Seed Oil · Sweet Almond Oil · Black Seed Oil · Sesame Oil · CCT Oil · Vitamin E</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُدهن على شعر مندي بماء خفيف مع التركيز على الأطراف؛ مناسب للتصفيف اليومي وكحمام زيت مغذي.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">125 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-cleanser-normal-dry" style="page: ag_roll_6; width:70mm; height:90mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-medium   " data-id="skin-cleanser-normal-dry" style="width:70mm;height:90mm;--c-bg:#F3F6FC;--c-tint:#E2EBF8;--c-accent:#1E468C;--c-deep:#122C5C;--c-border:#7A97C4;--c-text:#14223B;--c-muted:#45597A">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-cleanser-normal-dry.jpg" alt="غسول جل للبشرة العادية والجافة" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">غسول جل للبشرة العادية والجافة</div>
+          <div class="ag-tall-title-en" dir="ltr">Gel Cleanser · Normal &amp; Dry Skin</div>
+          <div class="ag-tall-sub">خالي من السلفات · غني بالهيالورونيك أسيد</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">غسول منظف ومرطب لطيف على البشرة الجافة والعادية، يحافظ على حاجز البشرة الطبيعي وينظفها بعمق دون أي تجفيف.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Hyaluronic Acid · Panthenol · Lactic Acid · Allantoin · Aloe Vera Extract · Cucumber Extract · Geranium Essential Oil · Disodium Lauryl Sulfosuccinate · Coco &amp; Decyl Glucoside · Coco Betaine · Polyquaternium-10</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُستخدم لغسل البشرة برفق مرة واحدة يومياً ثم يُشطف بالماء الفاتر.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">125 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-cleanser-oily" style="page: ag_roll_7; width:70mm; height:90mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-medium   " data-id="skin-cleanser-oily" style="width:70mm;height:90mm;--c-bg:#F0FAFB;--c-tint:#DCF2F5;--c-accent:#0E737E;--c-deep:#094E56;--c-border:#75B0B8;--c-text:#112C30;--c-muted:#42666B">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-cleanser-oily.jpg" alt="غسول جل للبشرة الدهنية" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">غسول جل للبشرة الدهنية</div>
+          <div class="ag-tall-title-en" dir="ltr">Gel Cleanser · Oily Skin</div>
+          <div class="ag-tall-sub">خالي من السلفات · بالساليسيليك والجليكوليك</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">غسول منظف ومرطب للبشرة الدهنية يزيل الدهون الزائدة بفاعلية مع الحفاظ على حاجز البشرة ونعومتها بفضل الهيالورونيك أسيد.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Salicylic Acid · Glycolic Acid · Hyaluronic Acid · Panthenol · Allantoin · Peppermint Essential Oil · Aloe Vera &amp; Cucumber Extract · Disodium Lauryl Sulfosuccinate · Coco &amp; Decyl Glucoside · Coco Betaine</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُستخدم لغسل البشرة برفق مرة واحدة يومياً ثم يُشطف بالماء الفاتر.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">125 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-toner-normal-dry" style="page: ag_roll_8; width:60mm; height:90mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-medium ag-narrow  " data-id="skin-toner-normal-dry" style="width:60mm;height:90mm;--c-bg:#FEF4F7;--c-tint:#F9E3EB;--c-accent:#A9325E;--c-deep:#751D3E;--c-border:#CE85A0;--c-text:#331622;--c-muted:#6E4756">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-toner-normal-dry.jpg" alt="تونر البشرة العادية والجافة" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">تونر البشرة العادية والجافة</div>
+          <div class="ag-tall-title-en" dir="ltr">Rose Toner · Normal &amp; Dry Skin</div>
+          <div class="ag-tall-sub">بماء الورد والنياسيناميد · ملمس زجاجي ناعم</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">تونر للعناية بالبشرة بعد الغسول يرمم حاجز البشرة ويعيد ضبط توازن الحموضة ويتركها بملمس ناعم ومخملي.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Niacinamide · Rose Hydrosol · Panthenol · Allantoin · Aloe Vera Extract · Cucumber Extract · Lactic Acid</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُمسح به الوجه بقطنة نظيفة بلطف بعد استخدام الغسول مباشرة.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">125 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-toner-oily-combo" style="page: ag_roll_9; width:60mm; height:90mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-medium ag-narrow  " data-id="skin-toner-oily-combo" style="width:60mm;height:90mm;--c-bg:#F0FBFC;--c-tint:#DCF3F5;--c-accent:#0D7B86;--c-deep:#095259;--c-border:#74B4BB;--c-text:#122E32;--c-muted:#45686D">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-toner-oily-combo.jpg" alt="تونر البشرة الدهنية والمختلطة" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">تونر البشرة الدهنية والمختلطة</div>
+          <div class="ag-tall-title-en" dir="ltr">Balancing Toner · Oily &amp; Mixed Skin</div>
+          <div class="ag-tall-sub">تنظيم الدهون وتقليل المسام · بالنياسيناميد والزنك</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">يرمم حاجز البشرة ويعيد ضبط الحموضة وينظم إفراز الدهون ويضيق المسام ليمنحك ملمساً ناعماً مخملياً.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Niacinamide · Zinc Sulfate · Glycolic Acid · Panthenol · Allantoin · Aloe Vera Extract · Cucumber Extract</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُمسح به الوجه بقطنة نظيفة بلطف بعد استخدام الغسول مباشرة.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">125 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-moisturizer-normal-dry" style="page: ag_roll_10; width:140mm; height:20mm;">
+        
+      <div class="ag-sticker ag-tpl-slim-band" data-id="skin-moisturizer-normal-dry" style="width:140mm;height:20mm;--c-bg:#F7FAF5;--c-tint:#E9F0E6;--c-accent:#4C6F47;--c-deep:#2F492B;--c-border:#8EA886;--c-text:#1D2B1B;--c-muted:#50624D">
+        <div class="ag-frame ag-slim-grid">
+          <div class="ag-slim-brand">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+          </div>
+          <div class="ag-slim-center">
+            <div class="ag-slim-title">كريم مرطب للبشرة العادية والجافة</div>
+            <div class="ag-slim-title-en" dir="ltr">Moisturizing Cream · Normal &amp; Dry Skin</div>
+            <div class="ag-slim-desc">كريم مرطب غني بالزيوت الطبيعية والمرطبات المائية لنعومة فائقة طوال اليوم.</div>
+            <div class="ag-slim-meta">
+              <span>100 جم</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+              <span>·</span>
+              <span class="ag-slim-tag">لأن جمالكِ يستحق الأفضل</span>
+            </div>
+          </div>
+          <div class="ag-slim-art-cell">
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-moisturizer-normal-dry.jpg" alt="كريم مرطب للبشرة العادية والجافة" />
+          </div>
+          <div class="ag-slim-details">
+            <div class="ag-slim-ing"><strong class="ag-ar-lbl">المكونات:</strong> <span dir="ltr">Sweet Almond &amp; Jojoba Oil · Shea Butter · Panthenol · Aloe Vera &amp; Cucumber Extract · Glycerin · Allantoin · Hydrous Lanolin</span></div>
+            <div class="ag-slim-usage"><strong class="ag-ar-lbl">الاستخدام:</strong> يُدهن عند الحاجة خاصة بعد الغسول والتونر ويزيد الاستخدام شتاءً.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-moisturizer-oily" style="page: ag_roll_11; width:80mm; height:90mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-medium   " data-id="skin-moisturizer-oily" style="width:80mm;height:90mm;--c-bg:#F4FAF6;--c-tint:#E3F2E8;--c-accent:#2B6E47;--c-deep:#1A4A2E;--c-border:#80AE90;--c-text:#162C1E;--c-muted:#486653">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-moisturizer-oily.jpg" alt="جل مرطب للبشرة الدهنية والمختلطة" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">جل مرطب للبشرة الدهنية والمختلطة</div>
+          <div class="ag-tall-title-en" dir="ltr">Moisturizing Gel · Oily &amp; Mixed Skin</div>
+          <div class="ag-tall-sub">تركيبة خفيفة متوازنة · بدون انسداد مسام</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">جل مرطب خفيف وسريع الامتصاص لترطيب البشرة الدهنية والمختلطة بزيوت خفيفة متوازنة تمنع تحفيز المسام لإفراز دهون زائدة.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Niacinamide · Zinc PCA · Panthenol · Grape Seed Oil · Jojoba Oil · Aloe Vera Extract · Cucumber Extract · Glycerin · Allantoin · CCT · Zetemol</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُدهن على بشرة نظيفة عند الحاجة وخصوصاً بعد الغسول والتونر، ويزيد الاستعمال في الشتاء.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">125 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-sunscreen-spf70" style="page: ag_roll_12; width:70mm; height:70mm;">
+        
+      <div class="ag-sticker ag-tpl-square" data-id="skin-sunscreen-spf70" style="width:70mm;height:70mm;--c-bg:#FFF9F2;--c-tint:#FCECD9;--c-accent:#D46812;--c-deep:#8E4207;--c-border:#E09A5B;--c-text:#301E0E;--c-muted:#6E5035">
+        <div class="ag-frame ag-sq-body">
+          <div class="ag-sq-header">
+            <div class="ag-hero-lockup">
+              <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+              <span class="ag-lockup-sep" aria-hidden="true"></span>
+              <img class="ag-artwork ag-art-multiply" src="./art/skin-sunscreen-spf70.jpg" alt="صن سكرين SPF 70+" />
+            </div>
+            <div class="ag-sq-title">صن سكرين <span class="ag-ltr-inline" dir="ltr">SPF 70+</span></div>
+            <div class="ag-sq-title-en" dir="ltr">Ultra Shield Sunscreen SPF 70+</div>
+            <div class="ag-sq-sub">حماية فائقة واسعة المدى UVA / UVB</div>
+          </div>
+          <div class="ag-divider"></div>
+          <div class="ag-sq-desc">واقي شمس بتركيبة خفيفة سريعة الامتصاص بدون أثر أبيض؛ يحمي البشرة من أشعة الشمس الضارة والتصبغات اليومية.</div>
+          <div class="ag-sec-head">التركيبة والحماية</div>
+          <div class="ag-ing-text" dir="ltr">Broad-Spectrum UVA/UVB Filters · Panthenol · Vitamin E · Aloe Vera Extract · Lightweight Moisturizers</div>
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُوضع بكمية مناسبة قبل التعرض للشمس بـ 15 دقيقة ويُجدد كل ساعتين.</div>
+          <div class="ag-foot-bar">
+            <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+            <span class="ag-foot-meta">50 مل · <span dir="ltr">EXP 11/2030</span></span>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-brightening-serum" style="page: ag_roll_13; width:60mm; height:40mm;">
+        
+      <div class="ag-sticker ag-tpl-mini-landscape ag-dark" data-id="skin-brightening-serum" style="width:60mm;height:40mm;--c-bg:#181E1A;--c-tint:#232C26;--c-accent:#DEC07C;--c-deep:#F2DCAA;--c-border:#9C8A58;--c-text:#FAF6EC;--c-muted:#C8C5BA">
+        <div class="ag-frame ag-minil-grid">
+          <div class="ag-minil-hero">
+            <div class="ag-minil-visuals">
+              <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+              <img class="ag-artwork ag-art-screen" src="./art/skin-brightening-serum.jpg" alt="سيروم تفتيح البشرة" />
+            </div>
+            <div class="ag-minil-title">سيروم تفتيح البشرة</div>
+            <div class="ag-minil-title-en" dir="ltr">Radiance Brightening Serum</div>
+            <div class="ag-minil-sub">نضارة وتوحيد لون وعلاج البقع</div>
+            <div class="ag-minil-meta">
+              <span>30 مل</span> · <span dir="ltr">EXP 11/2030</span>
+            </div>
+            <div class="ag-minil-tagline">لأن جمالكِ يستحق الأفضل</div>
+          </div>
+          <div class="ag-minil-info">
+            <div class="ag-minil-head">Active Ingredients</div>
+            <div class="ag-minil-ing" dir="ltr">Ethoxy Ascorbic Acid · Alpha Arbutin · Niacinamide · Hyaluronic Acid · Aquaxyl · Centella Extract · Zinc &amp; Sodium PCA · Japanese Amino Acids</div>
+            <div class="ag-minil-head-ar">طريقة الاستخدام</div>
+            <div class="ag-minil-usage">يُدهن مساءً على بشرة مندية بالماء حتى الامتصاص ثم يُرطب الوجه بالماء أو بكريم مرطب.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="skin-lip-balm" style="page: ag_roll_14; width:40mm; height:40mm;">
+        
+      <div class="ag-sticker ag-tpl-mini-square" data-id="skin-lip-balm" style="width:40mm;height:40mm;--c-bg:#FFF5F7;--c-tint:#FBE4EA;--c-accent:#B33E60;--c-deep:#7A233D;--c-border:#D48DA0;--c-text:#331720;--c-muted:#6E4954">
+        <div class="ag-frame ag-minisq-body">
+          <div class="ag-minisq-top">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <img class="ag-artwork ag-art-multiply" src="./art/skin-lip-balm.jpg" alt="ليب بالم طبيعي" />
+          </div>
+          <div class="ag-minisq-title">ليب بالم طبيعي</div>
+          <div class="ag-minisq-title-en" dir="ltr">Natural Nourishing Lip Balm</div>
+          <div class="ag-minisq-desc">ترطيب وترميم فوري للشفاه بالزبد والزيوت الطبيعية وشمع العسل.</div>
+          <div class="ag-minisq-ing" dir="ltr">Shea &amp; Cocoa Butter · Jojoba &amp; Sweet Almond Oil · Castor &amp; Grape Seed Oil · Beeswax</div>
+          <div class="ag-minisq-foot">
+            <span>قلم</span> · <span dir="ltr">EXP 11/2030</span>
+          </div>
+          <div class="ag-minisq-tag">لأن جمالكِ يستحق الأفضل</div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-shower-gel-strawberry" style="page: ag_roll_15; width:100mm; height:110mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-large   ag-wide-tall" data-id="body-shower-gel-strawberry" style="width:100mm;height:110mm;--c-bg:#FFF5F6;--c-tint:#FDE3E7;--c-accent:#BA253B;--c-deep:#7D1525;--c-border:#D67B88;--c-text:#321419;--c-muted:#6E464D">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/body-shower-gel-strawberry.jpg" alt="شاور جل · فراولة" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">شاور جل · فراولة</div>
+          <div class="ag-tall-title-en" dir="ltr">Creamy Strawberry Shower Gel</div>
+          <div class="ag-tall-sub">رغوة كريمية غنية ومنعشة · مناسب للبانيو</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">شاور جل فاخر برائحة الفراولة المنعشة ورغوة كريمية غنية بالجلسرين تمنح بشرتك نعومة وانتعاشاً يدوم، ومناسب للاستخدام كـ Bubble Bath.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Sodium Laureth Sulfate · Decyl Glucoside · Coco Betaine · Glycerin · Strawberry Perfume · Safe Cosmetic Color</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُوضع كمية مناسبة على لوفة مبللة ويُدلك الجسم برفق للاستمتاع برغوة غنية ثم يُشطف بالماء.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">500 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-shower-gel-peach" style="page: ag_roll_16; width:100mm; height:110mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-large   ag-wide-tall" data-id="body-shower-gel-peach" style="width:100mm;height:110mm;--c-bg:#FFF8F1;--c-tint:#FDEBD9;--c-accent:#C95E1B;--c-deep:#873A0B;--c-border:#DE9B69;--c-text:#331D0E;--c-muted:#6E503B">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/body-shower-gel-peach.jpg" alt="شاور جل · خوخ" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">شاور جل · خوخ</div>
+          <div class="ag-tall-title-en" dir="ltr">Velvet Peach Shower Gel</div>
+          <div class="ag-tall-sub">رغوة كريمية غنية ومنعشة · مناسب للبانيو</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">شاور جل فاخر برائحة الخوخ المخملية ورغوة كريمية غنية بالجلسرين تمنح بشرتك نعومة فائقة وعطراً يدوم، ومناسب للاستخدام كـ Bubble Bath.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Sodium Laureth Sulfate · Decyl Glucoside · Coco Betaine · Glycerin · Peach Perfume · Safe Cosmetic Color</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُوضع كمية مناسبة على لوفة مبللة ويُدلك الجسم برفق للاستمتاع برغوة غنية ثم يُشطف بالماء.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">500 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-shower-gel-lavender" style="page: ag_roll_17; width:100mm; height:110mm;">
+        
+    <div class="ag-sticker ag-tpl-tall-large   ag-wide-tall" data-id="body-shower-gel-lavender" style="width:100mm;height:110mm;--c-bg:#F9F6FC;--c-tint:#EDE5F7;--c-accent:#684B96;--c-deep:#432D66;--c-border:#A28EC4;--c-text:#231A33;--c-muted:#5A4E6E">
+      <div class="ag-frame ag-tall-body">
+        <div class="ag-top-strip"></div>
+        <div class="ag-tall-header">
+          <div class="ag-hero-lockup">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <span class="ag-lockup-sep" aria-hidden="true"></span>
+            <img class="ag-artwork ag-art-multiply" src="./art/body-shower-gel-lavender.jpg" alt="شاور جل · لافندر" />
+          </div>
+          <div class="ag-brand-kicker">Auraglow · SKIN &amp; HAIR CARE</div>
+          <div class="ag-tall-title">شاور جل · لافندر</div>
+          <div class="ag-tall-title-en" dir="ltr">Relaxing Lavender Shower Gel</div>
+          <div class="ag-tall-sub">استرخاء فاخر برغوة كريمية · مناسب للبانيو</div>
+        </div>
+        <div class="ag-divider"></div>
+        <div class="ag-tall-desc">شاور جل هادئ برائحة اللافندر الفرنسي ورغوة كريمية غنية بالجلسرين تمنح جسمك استرخاءً ونعومة حريرية، ومناسب للاستخدام كـ Bubble Bath.</div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">المواد الفعالة الأساسية</div>
+          <div class="ag-ing-text" dir="ltr">Sodium Laureth Sulfate · Decyl Glucoside · Coco Betaine · Glycerin · Lavender Perfume · Safe Cosmetic Color</div>
+        </div>
+        <div class="ag-tall-section">
+          <div class="ag-sec-head">طريقة الاستخدام</div>
+          <div class="ag-usage-text">يُوضع كمية مناسبة على لوفة مبللة ويُدلك الجسم برفق للاستمتاع برغوة غنية ثم يُشطف بالماء.</div>
+        </div>
+        <div class="ag-foot-bar">
+          <span class="ag-foot-tagline">لأن جمالكِ يستحق الأفضل</span>
+          <span class="ag-foot-meta">500 مل · <span dir="ltr">EXP: 11/2030</span></span>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-butter-berry" style="page: ag_roll_18; width:140mm; height:20mm;">
+        
+      <div class="ag-sticker ag-tpl-slim-band" data-id="body-butter-berry" style="width:140mm;height:20mm;--c-bg:#F2F8FD;--c-tint:#E0EFFA;--c-accent:#32689B;--c-deep:#1E4469;--c-border:#7EA7CC;--c-text:#15273A;--c-muted:#486078">
+        <div class="ag-frame ag-slim-grid">
+          <div class="ag-slim-brand">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+          </div>
+          <div class="ag-slim-center">
+            <div class="ag-slim-title">بادي باتر · توت بري</div>
+            <div class="ag-slim-title-en" dir="ltr">Wild Berry Body Butter</div>
+            <div class="ag-slim-desc">ترطيب قوي وكثيف برائحة التوت البري الفرنسية دون أي ملمس دهني أو لزج.</div>
+            <div class="ag-slim-meta">
+              <span>90 جم</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+              <span>·</span>
+              <span class="ag-slim-tag">لأن جمالكِ يستحق الأفضل</span>
+            </div>
+          </div>
+          <div class="ag-slim-art-cell">
+            <img class="ag-artwork ag-art-multiply" src="./art/body-butter-berry.jpg" alt="بادي باتر · توت بري" />
+          </div>
+          <div class="ag-slim-details">
+            <div class="ag-slim-ing"><strong class="ag-ar-lbl">المكونات:</strong> <span dir="ltr">Cocoa Butter · Shea Butter · Coconut Butter · Jojoba Oil · Sweet Almond Oil · Glycerin · Vit. E · Wild Berry Perfume</span></div>
+            <div class="ag-slim-usage"><strong class="ag-ar-lbl">الاستخدام:</strong> تُدهن على الجسم عند الحاجة، ولفاعلية أقوى تُستخدم بعد دش دافئ.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-butter-musk" style="page: ag_roll_19; width:140mm; height:20mm;">
+        
+      <div class="ag-sticker ag-tpl-slim-band" data-id="body-butter-musk" style="width:140mm;height:20mm;--c-bg:#FAF6EF;--c-tint:#EFE7D8;--c-accent:#876438;--c-deep:#593F1E;--c-border:#BAA17C;--c-text:#2B2114;--c-muted:#645440">
+        <div class="ag-frame ag-slim-grid">
+          <div class="ag-slim-brand">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+          </div>
+          <div class="ag-slim-center">
+            <div class="ag-slim-title">بادي باتر · مسك</div>
+            <div class="ag-slim-title-en" dir="ltr">Royal Musk Body Butter</div>
+            <div class="ag-slim-desc">ترطيب قوي وكثيف برائحة المسك الراقية دون أي ملمس دهني أو لزج.</div>
+            <div class="ag-slim-meta">
+              <span>90 جم</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+              <span>·</span>
+              <span class="ag-slim-tag">لأن جمالكِ يستحق الأفضل</span>
+            </div>
+          </div>
+          <div class="ag-slim-art-cell">
+            <img class="ag-artwork ag-art-multiply" src="./art/body-butter-musk.jpg" alt="بادي باتر · مسك" />
+          </div>
+          <div class="ag-slim-details">
+            <div class="ag-slim-ing"><strong class="ag-ar-lbl">المكونات:</strong> <span dir="ltr">Cocoa Butter · Shea Butter · Coconut Butter · Jojoba Oil · Sweet Almond Oil · Glycerin · Vit. E · Musk Perfume</span></div>
+            <div class="ag-slim-usage"><strong class="ag-ar-lbl">الاستخدام:</strong> تُدهن على الجسم عند الحاجة، ولفاعلية أقوى تُستخدم بعد دش دافئ.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-butter-pomegranate" style="page: ag_roll_20; width:140mm; height:20mm;">
+        
+      <div class="ag-sticker ag-tpl-slim-band" data-id="body-butter-pomegranate" style="width:140mm;height:20mm;--c-bg:#FDF3F6;--c-tint:#F8E2E9;--c-accent:#A93255;--c-deep:#731C36;--c-border:#CC849A;--c-text:#32161F;--c-muted:#6C4753">
+        <div class="ag-frame ag-slim-grid">
+          <div class="ag-slim-brand">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+          </div>
+          <div class="ag-slim-center">
+            <div class="ag-slim-title">بادي باتر · رمان</div>
+            <div class="ag-slim-title-en" dir="ltr">Pomegranate Body Butter</div>
+            <div class="ag-slim-desc">ترطيب قوي وكثيف برائحة الرمان الفرنسية الراقية دون أي ملمس دهني أو لزج.</div>
+            <div class="ag-slim-meta">
+              <span>90 جم</span>
+              <span>·</span>
+              <span dir="ltr">EXP: 11/2030</span>
+              <span>·</span>
+              <span class="ag-slim-tag">لأن جمالكِ يستحق الأفضل</span>
+            </div>
+          </div>
+          <div class="ag-slim-art-cell">
+            <img class="ag-artwork ag-art-multiply" src="./art/body-butter-pomegranate.jpg" alt="بادي باتر · رمان" />
+          </div>
+          <div class="ag-slim-details">
+            <div class="ag-slim-ing"><strong class="ag-ar-lbl">المكونات:</strong> <span dir="ltr">Cocoa Butter · Shea Butter · Coconut Butter · Jojoba Oil · Sweet Almond Oil · Glycerin · Vit. E · Pomegranate Perfume</span></div>
+            <div class="ag-slim-usage"><strong class="ag-ar-lbl">الاستخدام:</strong> تُدهن على الجسم عند الحاجة، ولفاعلية أقوى تُستخدم بعد دش دافئ.</div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <section class="roll-page" data-sticker-id="body-hand-cream" style="page: ag_roll_21; width:40mm; height:60mm;">
+        
+      <div class="ag-sticker ag-tpl-tall-compact" data-id="body-hand-cream" style="width:40mm;height:60mm;--c-bg:#F7FAF5;--c-tint:#E9F1E6;--c-accent:#4F744A;--c-deep:#2F4D2B;--c-border:#8EA886;--c-text:#1D2B1B;--c-muted:#4E624B">
+        <div class="ag-frame ag-tc-body">
+          <div class="ag-tc-visuals">
+            <img class="ag-logo" src="./art/auraglow-logo.jpg" alt="أوراجلو" />
+            <img class="ag-artwork ag-art-multiply" src="./art/body-hand-cream.jpg" alt="هاند كريم مرطب" />
+          </div>
+          <div class="ag-tc-title">هاند كريم مرطب</div>
+          <div class="ag-tc-title-en" dir="ltr">Nourishing Hand Cream</div>
+          <div class="ag-tc-sub">نعومة فائقة لليدين طوال اليوم</div>
+          <div class="ag-divider"></div>
+          <div class="ag-tc-desc">كريم مرطب يومي لليدين غني بالزيوت الطبيعية والمرطبات المائية.</div>
+          <div class="ag-tc-ing" dir="ltr">Sweet Almond &amp; Jojoba Oil · Shea Butter · Panthenol · Aloe Vera &amp; Cucumber · Glycerin · Allantoin</div>
+          <div class="ag-tc-usage"><strong>الاستخدام:</strong> يُدهن على اليدين عند الحاجة وبعد غسل اليدين.</div>
+          <div class="ag-tc-foot">
+            <div>60 مل · <span dir="ltr">EXP 11/2030</span></div>
+            <div class="ag-tc-tag">لأن جمالكِ يستحق الأفضل</div>
+          </div>
+        </div>
+      </div>
+      </section>
+</body>
+</html>

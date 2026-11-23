@@ -1,41 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://shelhaegypt.com/</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/logos/royal_movers_logo.jpg</image:loc>
+      <image:title>شعار رويال موفرز VIP لنقل وتغليف الأثاث في مصر</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/images/royal_delicate_packing.webp</image:loc>
+      <image:title>تغليف فندقي VIP للتحف والنجف والصالونات - رويال موفرز 01233391255</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://shelhaegypt.com/#calculator-section</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>https://shelhaegypt.com/articles/</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://shelhaegypt.com/#winch-section</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shelhaegypt.com/#services</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://shelhaegypt.com/#prep-guide</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shelhaegypt.com/#faqs</loc>
-    <lastmod>2026-10-31</lastmod>
+    <loc>https://shelhaegypt.com/articles/furniture-moving-new-cairo/</loc>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/images/royal_winch_villa.webp</image:loc>
+      <image:title>دليل نقل وتغليف الأثاث في التجمع الخامس والقاهرة الجديدة بدون خدش</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/furniture-moving-sheikh-zayed-october/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/images/royal_movers_crew_arrival.webp</image:loc>
+      <image:title>شركة نقل عفش في الشيخ زايد و6 أكتوبر: خطوات الانتقال الآمن للفلل والكمبوندات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/furniture-moving-madinaty-rehab-shorouk/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/images/royal_movers_workers_loading.webp</image:loc>
+      <image:title>دليل نقل أثاث مدينتي والرحاب والشروق: تصاريح البوابات وحماية العفش</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/hydraulic-winch-prices-egypt/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/optimized/hydraulic_winch_building.webp</image:loc>
+      <image:title>أسعار ونش رفع الأثاث الهيدروليكي في مصر 2026 ومتى تحتاجه فعلاً؟</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/european-5-layer-furniture-packing/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/images/royal_delicate_packing.webp</image:loc>
+      <image:title>دليل التغليف الأوروبي 5 طبقات: كيف نحمي الصيني والنجف والتحف والصالونات؟</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/furniture-moving-prices-cairo-giza/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/optimized/padded_truck_bed.webp</image:loc>
+      <image:title>أسعار نقل العفش في القاهرة والجيزة 2026: كيف تُحسب التكلفة بدون مصاريف مخفية؟</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/ac-carpentry-dismantling-guide/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/images/royal_movers_carpenter_vip.webp</image:loc>
+      <image:title>فك وتركيب التكييفات والنجارة أثناء نقل العفش: أخطاء تكلفك آلاف الجنيهات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shelhaegypt.com/articles/pre-move-apartment-checklist/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shelhaegypt.com/assets/optimized/crew_sofa_wrap.webp</image:loc>
+      <image:title>قائمة تجهيز الشقة قبل يوم نقل العفش خطوة بخطوة (Checklist شاملة للعائلات)</image:title>
+    </image:image>
   </url>
 </urlset>

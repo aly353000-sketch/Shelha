@@ -4,31 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Google tag (gtag.js) - Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TFJ7D161W"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18544594401"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
+      gtag('config', 'AW-18544594401');
       gtag('config', 'G-2TFJ7D161W');
+    </script>
 
-      // Global Deduplicated Click Tracking for phone_click and whatsapp_click
+    <!-- Event snippet for Google Ads Phone Call conversion -->
+    <script>
+      function gtag_report_conversion(url) {
+        var called = false;
+        var callback = function () {
+          if (called) return;
+          called = true;
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18544594401/Zg7tCM6j1r0dEOGb4IpF',
+          'value': 1.0,
+          'currency': 'EGP',
+          'event_callback': callback
+        });
+        setTimeout(callback, 800);
+        return false;
+      }
+    </script>
+
+    <script>
+      // Global Deduplicated Click Tracking for GA4 phone_click, whatsapp_click and WhatsApp Ads conversion
       document.addEventListener('click', function(event) {
         var link = event.target && event.target.closest ? event.target.closest('a') : null;
         if (!link || !link.href) return;
 
         var href = link.href.trim();
         var now = Date.now();
-        
-        // Prevent duplicate trigger on repeated bubbles or rapid re-clicks within 800ms
-        if (link.__lastGaTrackTime && (now - link.__lastGaTrackTime < 800)) {
-          return;
-        }
+        window.__lastGaEventTime = window.__lastGaEventTime || {};
 
         if (href.startsWith('tel:')) {
-          link.__lastGaTrackTime = now;
           var phoneNumber = href.replace('tel:', '').trim();
+          var phoneKey = 'phone_' + phoneNumber;
+          if (window.__lastGaEventTime[phoneKey] && (now - window.__lastGaEventTime[phoneKey] < 800)) {
+            return;
+          }
+          window.__lastGaEventTime[phoneKey] = now;
           if (typeof gtag === 'function') {
             gtag('event', 'phone_click', {
               phone_number: phoneNumber,
@@ -39,7 +64,11 @@
             });
           }
         } else if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
-          link.__lastGaTrackTime = now;
+          var waKey = 'wa_' + href;
+          if (window.__lastGaEventTime[waKey] && (now - window.__lastGaEventTime[waKey] < 800)) {
+            return;
+          }
+          window.__lastGaEventTime[waKey] = now;
           if (typeof gtag === 'function') {
             gtag('event', 'whatsapp_click', {
               whatsapp_url: href,
@@ -48,47 +77,94 @@
               event_category: 'engagement',
               event_label: href
             });
+            // Google Ads Conversion tracking for WhatsApp lead - جهة اتصال (2)
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18544594401/Mq04CNmS1LgdEOGb4IpF',
+              'value': 1.0,
+              'currency': 'EGP',
+              'event_category': 'lead',
+              'event_label': 'WhatsApp'
+            });
           }
         }
       }, { capture: true });
     </script>
-    <title>شركة شِلها لنقل وتغليف الأثاث | ونش هيدروليكي وسيارات مجهزة في مصر</title>
-    <meta name="description" content="شركة شِلها لنقل وتغليف الأثاث في القاهرة وجميع المحافظات. فك وتركيب وتغليف عفش الشقق والفلل، فك وتركيب التكييفات 800ج، أوناش هيدروليكية تبدأ من 1700ج." />
-    <meta name="keywords" content="شركة نقل اثاث, نقل عفش, شركة نقل عفش بالقاهرة, ونش رفع اثاث, ونش هيدروليكي, نقل اثاث التجمع الخامس, نقل عفش مدينة نصر, تغليف اثاث, فك وتركيب تكييفات, سيارات نقل عفش مغلقة, اسعار شركات نقل العفش, شِلها لنقل الاثاث" />
-    <meta name="author" content="شركة شِلها لنقل وتغليف الأثاث" />
+    <title>رويال موفرز VIP | خدمة نقل وتغليف الأثاث الفندقية للفلل والشقق الراقية | 01233391255</title>
+    <meta name="description" content="رويال موفرز VIP خدمة نقل وتغليف فندقية راقية للفلل والشقق والكمبوندات في القاهرة والجيزة. عناية فائقة بالتحف والصالونات والنجف، تغليف أوروبي 5 طبقات، وفك وتركيب شامل بدون خدش. اتصل الآن: 01233391255." />
+    <meta name="keywords" content="رويال موفرز VIP, نقل وتغليف اثاث, شركة نقل عفش التجمع الخامس, نقل اثاث الشيخ زايد, نقل عفش مدينتي والرحاب, تغليف اثاث بالبابلز, نقل اثاث فلل وقصور, افضل شركة نقل اثاث بالقاهرة, نقل اثاث كمبوندات, 01233391255" />
+    <meta name="author" content="رويال موفرز VIP لنقل الأثاث | Royal Movers Egypt" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Google Search Console Verification Meta Tag -->
+    <meta name="google-site-verification" content="hBDqg1s06-2q5ir8oKzP_ZijEo73m_JMs1cNFZcCLcQ" />
     
     <!-- Canonical URL for Google Indexing -->
     <link rel="canonical" href="https://shelhaegypt.com/" />
 
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%231d4ed8'/><text x='50' y='68' font-size='55' font-weight='900' font-family='sans-serif' fill='white' text-anchor='middle'>ش</text></svg>" />
+    <!-- Google Search Snippet & Browser Favicon (Official Square Shield Logo) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/jpeg" sizes="1024x1024" href="/shelha_logo_square.jpg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Geo Local SEO for Egypt -->
-    <meta name="geo.region" content="EG" />
-    <meta name="geo.placename" content="Cairo, Egypt" />
-    <meta name="geo.position" content="30.0444;31.2357" />
-    <meta name="ICBM" content="30.0444, 31.2357" />
+    <!-- Geo Local SEO for Egypt - Mokattam Headquarters -->
+    <meta name="geo.region" content="EG-C" />
+    <meta name="geo.placename" content="Mokattam, Cairo, Egypt" />
+    <meta name="geo.position" content="30.0131;31.3026" />
+    <meta name="ICBM" content="30.0131, 31.3026" />
 
     <!-- Open Graph / Facebook / WhatsApp Preview -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://shelhaegypt.com/" />
-    <meta property="og:title" content="شركة شِلها لنقل وتغليف الأثاث | ونش هيدروليكي وسيارات مجهزة" />
-    <meta property="og:description" content="مش أي حد يشيل عفشك يستاهل ثقتك! شركة شِلها تقدم أفضل خدمات نقل وتغليف الأثاث، فك وتركيب التكييفات 800ج، وأوناش رفع هيدروليكية تبدأ من 1700ج في مصر." />
-    <meta property="og:site_name" content="شِلها لنقل وتغليف الأثاث" />
+    <meta property="og:title" content="رويال موفرز VIP | خدمة نقل وتغليف الأثاث الفندقية للفلل والشقق الراقية | 01233391255" />
+    <meta property="og:description" content="مش مجرد عمال نقل.. إحنا حراس لرفاهيتك! تغليف أوروبي 5 طبقات للتحف والصالونات والنجف، نجارون وفنيو تكييفات محترفون، وتصاريح دخول لأرقى كمبوندات مصر. الخط الموحد: 01233391255." />
+    <meta property="og:site_name" content="رويال موفرز لنقل الأثاث | ROYAL MOVERS VIP" />
     <meta property="og:locale" content="ar_EG" />
-    <meta property="og:image" content="https://shelhaegypt.com/assets/aistudio/FB_IMG_1793372096933_b1d91a1d.jpg" />
+    <meta property="og:image" content="https://shelhaegypt.com/assets/logos/royal_movers_logo.jpg" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="شركة شِلها لنقل وتغليف الأثاث" />
-    <meta name="twitter:description" content="عفشك في أمان مع شِلها. نقل وتغليف الأثاث وفك وتركيب التكييفات وأوناش هيدروليكية بجميع محافظات مصر." />
-    <meta name="twitter:image" content="https://shelhaegypt.com/assets/aistudio/FB_IMG_1793372096933_b1d91a1d.jpg" />
+    <meta name="twitter:title" content="رويال موفرز VIP | خدمة نقل وتغليف الأثاث الفندقية للفلل والشقق الراقية | 01233391255" />
+    <meta name="twitter:description" content="مش مجرد عمال نقل.. إحنا حراس لرفاهيتك! تغليف أوروبي 5 طبقات للتحف والصالونات والنجف، نجارون وفنيو تكييفات محترفون، وتصاريح دخول لأرقى كمبوندات مصر. الخط الموحد: 01233391255." />
+    <meta name="twitter:image" content="https://shelhaegypt.com/assets/logos/royal_movers_logo.jpg" />
 
-    <!-- Google Fonts: Alexandria, Readex Pro & IBM Plex Sans Arabic -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preload exact LCP Hero WebP per viewport so high-DPR mobile only fetches 22KB WebP -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/assets/images/royal_delicate_packing_mobile.webp"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/assets/images/royal_delicate_packing.webp"
+      media="(min-width: 769px)"
+      fetchpriority="high"
+    />
+
+    <!-- Google Fonts: Non-render-blocking Alexandria (only used weights) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&display=swap"
+      />
+    </noscript>
 
     <!-- Schema.org JSON-LD Graph for Google Search & Google Ads -->
     <script type="application/ld+json">
@@ -98,27 +174,87 @@
         {
           "@type": "MovingCompany",
           "@id": "https://shelhaegypt.com/#organization",
-          "name": "شركة شِلها لنقل وتغليف الأثاث",
-          "alternateName": "شِلها لنقل العفش",
+          "name": "رويال موفرز لنقل أثاث الشقق والفلل بمصر | ROYAL MOVERS VIP",
+          "alternateName": [
+            "رويال موفرز",
+            "شركة رويال لنقل وتغليف الأثاث",
+            "رويال لنقل الأثاث",
+            "Royal Movers",
+            "Royal Movers Egypt",
+            "Royal Movers VIP",
+            "ROYAL MOVERS VIP",
+            "شركة رويال موفرز لنقل العفش"
+          ],
           "url": "https://shelhaegypt.com/",
-          "logo": "https://shelhaegypt.com/assets/aistudio/FB_IMG_1793372096933_b1d91a1d.jpg",
-          "image": "https://shelhaegypt.com/assets/aistudio/FB_IMG_1793372096933_b1d91a1d.jpg",
-          "description": "شركة متخصصة في نقل الأثاث وتغليف العفش للشقق والفلل والشركات والعيادات مع فك وتركيب التكييفات والأجهزة الكهربائية وتوفير ونش هيدروليكي لرفع وتنزيل الأثاث لجميع محافظات مصر.",
-          "telephone": ["+201099649897", "+201128418399", "+201019785437"],
+          "logo": "https://shelhaegypt.com/assets/logos/royal_movers_logo.jpg",
+          "image": "https://shelhaegypt.com/assets/logos/royal_movers_logo.jpg",
+          "description": "أفضل شركة نقل أثاث ونقل عفش للشقق والفلل في القاهرة والجيزة (رويال موفرز VIP) بجودة فندقية وأسعار اقتصادية وعادلة تناسب الجميع. ونش رفع عفش هيدروليكي، سيارات مغلقة مجهزة، وفك وتركيب وتغليف ألماني. الخط الساخن: 01233391255.",
+          "telephone": ["+201233391255"],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+201233391255",
+              "contactType": "customer service",
+              "areaServed": "EG",
+              "availableLanguage": ["Arabic", "English"]
+            }
+          ],
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "القاهرة",
-            "addressRegion": "القاهرة الكبرى",
+            "streetAddress": "شارع 9، ميدان النافورة، المقطم",
+            "addressLocality": "المقطم",
+            "addressRegion": "القاهرة",
+            "postalCode": "11571",
             "addressCountry": "EG"
           },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.0131,
+            "longitude": 31.3026
+          },
           "areaServed": [
-            "القاهرة", "القاهرة الجديدة", "التجمع الخامس", "مدينة نصر", "مصر الجديدة", "المعادي", "الشيخ زايد", "6 أكتوبر", "الشروق", "مدينتي", "الرحاب", "الإسكندرية", "جميع محافظات مصر"
+            "القاهرة", "الجيزة", "الإسكندرية", "القليوبية", "الشرقية", "الغربية", "المنوفية", "الدقهلية", "دمياط", "كفر الشيخ", "البحيرة", "بورسعيد", "الإسماعيلية", "السويس", "الفيوم", "بني سويف", "المنيا", "أسيوط", "سوهاج", "قنا", "الأقصر", "أسوان", "البحر الأحمر", "مطروح", "شمال سيناء", "جنوب سيناء", "الوادي الجديد", "التجمع الخامس", "القاهرة الجديدة", "مدينة نصر", "مصر الجديدة", "المعادي", "الشيخ زايد", "6 أكتوبر", "حدائق الأهرام", "الشروق", "مدينتي", "الرحاب", "العاصمة الإدارية", "الساحل الشمالي", "العين السخنة", "الغردقة", "شرم الشيخ", "العاشر من رمضان", "طنطا", "المنصورة", "بنها", "جميع محافظات مصر"
           ],
           "priceRange": "$$",
           "openingHours": "Mo-Su 00:00-24:00",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "184",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "م. أحمد الشريف"
+              },
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              },
+              "reviewBody": "خدمة ممتازة وفريق عمل محترف جداً، نقل وتغليف الشقة بالكامل بكراتين 5 طبقات بدون أي خدش، والونش الهيدروليكي وفر وقت وجهد كبير."
+            },
+            {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "د. نورهان صادق"
+              },
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              },
+              "reviewBody": "أمانة والتزام تام بالمواعيد، فك وتركيب التكييفات تم باحترافية وسيارات النقل مجهزة ومبطنة."
+            }
+          ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "خدمات نقل وتغليف الأثاث",
+            "name": "خدمات نقل وتغليف الأثاث ومستلزمات الشحن",
             "itemListElement": [
               {
                 "@type": "Offer",
@@ -131,7 +267,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "ونش رفع أثاث هيدروليكي تبدأ من 1700 ج.م"
+                  "name": "ونش رفع أثاث هيدروليكي يبدأ من 2500 ج.م"
                 }
               },
               {
@@ -147,9 +283,55 @@
                   "@type": "Service",
                   "name": "تغليف الأثاث والصيني بكراتين 5 راق وبابلز"
                 }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "بيع وتوصيل كراتين 5 طبقات مقواة وشنط مفروشات ورولات بابلز لباب المنزل",
+                  "description": "خدمة توريد وتوصيل كراتين نقل وتخزين 5 طبقات متينة ومستلزمات التغليف ورولات بابلز واسترتش وشنط مفروشات لباب المنزل بالقاهرة والجيزة"
+                }
               }
             ]
           }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://shelhaegypt.com/#website",
+          "url": "https://shelhaegypt.com/",
+          "name": "شركة رويال موفرز لنقل وتغليف الأثاث | ROYAL MOVERS VIP",
+          "description": "شركة نقل وتغليف أثاث الشقق والفلل والشركات في مصر بأسعار عادلة وجودة VIP، أوناش هيدروليكية وسيارات مغلقة وفك وتركيب وتغليف أوروبي محكم.",
+          "inLanguage": "ar"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://shelhaegypt.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "الرئيسية",
+              "item": "https://shelhaegypt.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "خدمات نقل الأثاث",
+              "item": "https://shelhaegypt.com/#services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "كمبوندات نخدمها",
+              "item": "https://shelhaegypt.com/#luxury-compounds"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "الونش الهيدروليكي",
+              "item": "https://shelhaegypt.com/#winch-details"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -160,12 +342,12 @@
               "name": "ما هو سعر خدمة الونش الهيدروليكي لرفع الأثاث؟",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "يبدأ سعر خدمة الونش الهيدروليكي من 1700 ج.م، وهو ونش مجهز بحمولة حتى 400 كجم ويصل للأدوار المرتفعة حتى الدور 25."
+                "text": "يبدأ سعر خدمة الونش الهيدروليكي من 2,500 ج.م فقط، وهو ونش مجهز بحمولة حتى 400 كجم ويصل للأدوار المرتفعة حتى الدور 25."
               }
             },
             {
               "@type": "Question",
-              "name": "كم سعر فك وتركيب التكييف مع شركة شِلها؟",
+              "name": "كم سعر فك وتركيب التكييف مع شركة رويال موفرز؟",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "سعر فك وتركيب التكييف هو 800 ج.م للوحدة، يقوم به فني تكييف متخصص ومعتمد يتولى فك الوحدة وحفظ شحنة الفريون وإعادة تركيبها وتشغيلها بكفاءة."
@@ -173,7 +355,7 @@
             },
             {
               "@type": "Question",
-              "name": "كيف تحافظ شركة شِلها على سلامة الأثاث أثناء النقل؟",
+              "name": "كيف تحافظ شركة رويال موفرز VIP على سلامة الأثاث أثناء النقل؟",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "نستخدم خامات تغليف سميكة كالبابلز والاسترتش والكرتون المقوى 5 راق، مع سيارات مبطنة بشرائح خشبية وأحزمة تثبيت لمنع أي اهتزاز."
@@ -185,7 +367,7 @@
     }
     </script>
   </head>
-  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
+  <body class="bg-[#020b18] text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950" style="background-color:#020b18;color:#f1f5f9">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

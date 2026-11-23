@@ -1,58 +1,19 @@
-import React, { useState } from 'react';
-import { Phone, MessageCircle, MapPin, Clock, ShieldCheck, Heart, Globe, Copy, Check } from 'lucide-react';
-import { COMPANY_DATA } from '../data/companyData';
+import React from 'react';
+import { Phone, MessageCircle, Clock, ShieldCheck, Heart } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { useApp } from '../context/AppContext';
-import { useEditor } from '../context/EditorContext';
+import { handlePhoneCallClick } from '../utils/analytics';
 
 export const Footer: React.FC = () => {
   const { t, theme } = useApp();
-  const { isEditor, setRole, openEditorModal } = useEditor();
-  const [copiedLink, setCopiedLink] = useState(false);
-
-  const handleCopyWebsiteLink = () => {
-    const url = 'https://shelhaegypt.com';
-    navigator.clipboard.writeText(url);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2500);
-  };
-
-  const seoKeywords = [
-    'شركة نقل اثاث بمصر',
-    'نقل عفش واثاث',
-    'ونش رفع اثاث هيدروليكي',
-    'ارخص شركة نقل عفش بالقاهرة',
-    'نقل عفش التجمع الخامس',
-    'شركة نقل اثاث بمدينة نصر',
-    'نقل اثاث مصر الجديدة',
-    'ونش عفش الشيخ زايد',
-    'نقل عفش 6 اكتوبر',
-    'تغليف اثاث وعفش بالبابلز',
-    'فك وتركيب تكييفات نقل عفش',
-    'سيارات نقل عفش مغلقة ومجهزة',
-    'نقل عفش فلل وقصور',
-    'نقل اثاث شركات ومكاتب',
-    'نقل عيادات ومراكز طبية',
-    'نقل عفش بالمعادي',
-    'نقل اثاث الشروق ومدينتي',
-    'نقل عفش الرحاب',
-    'نقل اثاث العاصمة الادارية',
-    'نقل عفش الاسكندرية والساحل الشمالي',
-    'دينا نقل عفش',
-    'اسعار ونش رفع الاثاث',
-    'شركة شِلها لنقل الاثاث',
-    'فني تكييف نقل عفش',
-    'نجار فك وتركيب غرف نوم',
-    'كراتين نقل عفش',
-    'تغليف صالونات وانتريهات',
-  ];
 
   return (
     <footer className={`border-t text-right transition-colors duration-300 ${
       theme === 'light'
-        ? 'bg-white border-slate-200 text-slate-600'
-        : 'bg-[#010714] border-blue-900/40 text-slate-400'
+        ? 'bg-white border-slate-200 text-slate-700'
+        : 'bg-[#010714] border-blue-900/40 text-slate-300'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-28 sm:pb-24 space-y-12">
         
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -60,68 +21,80 @@ export const Footer: React.FC = () => {
           {/* Brand & Slogan */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-sky-400 flex items-center justify-center text-white font-black text-2xl shadow-md">
-                ش
-              </div>
+              <img 
+                src="/assets/logos/royal_movers_logo_sm.webp" 
+                alt="ROYAL MOVERS VIP Logo" 
+                width={56}
+                height={56}
+                loading="lazy"
+                decoding="async"
+                className="w-14 h-14 rounded-2xl bg-white p-1 border border-amber-400/40 shadow-lg object-contain" 
+              />
               <div>
-                <span className="text-3xl font-black text-blue-950">
-                  شِلـهـا
+                <span className="text-2xl font-black text-amber-500 flex items-center gap-1.5">
+                  <span>👑</span>
+                  <span>رويال موفرز</span>
                 </span>
-                <span className="block text-sm text-blue-700 font-bold">
-                  شركة شِلها لنقل وتغليف الأثاث في مصر
+                <span className="block text-xs text-amber-300 font-bold font-mono tracking-wider">
+                  ROYAL MOVERS VIP
                 </span>
               </div>
             </div>
 
-            <p className={`text-xs sm:text-sm leading-relaxed ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
+            <p className={`text-sm sm:text-base lg:text-lg leading-relaxed ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-300'}`}>
               {t(
-                'مش أي حد يشيل عفشك.. يستاهل ثقتك! إحنا مش بننقل عفش وبس، إحنا بننقل بيتك بكل اللي فيه من ذكريات وتعب سنين. سيبها على شِلها وإنت مرتاح.',
-                'We carry your home and precious memories with the utmost professional care and dedication. Relax and leave it to Shilha.'
+                'رويال موفرز VIP لنقل وتغليف أثاث الشقق والفلل والشركات بمصر. نجمع بين الفخامة والجودة الفندقية والأسعار العادلة المناسبة لميزانيتك، بأحدث الأوناش الهيدروليكية والسيارات المغلقة.',
+                'Royal Movers VIP Egypt: Quality moving & packing for apartments, villas, and offices at fair, transparent prices.'
               )}
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-sky-600 font-bold">
-              <ShieldCheck className="w-4 h-4 text-sky-500" />
-              <span>{t('عناية فائقة وتغليف أوروبي لحماية المنقولات', 'Premium European Packing for Furniture Protection')}</span>
+            <div className="flex items-center gap-2 text-xs text-amber-400 font-bold">
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+              <span>{t('عناية فائقة وتغليف ألماني لحماية التحف والمقتنيات', 'German-Grade Protective Packing for Fine Antiques')}</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className={`font-black text-base border-b pb-2 ${
+            <h2 className={`font-black text-lg sm:text-xl border-b pb-2 ${
               theme === 'light' ? 'text-slate-900 border-slate-200' : 'text-white border-blue-900/60'
             }`}>
               {t('خدماتنا الرئيسية', 'Our Key Services')}
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            </h2>
+            <ul className="space-y-0.5 text-sm sm:text-base font-bold">
               <li>
-                <a href="#services" className="hover:text-sky-400 transition-colors">
+                <a href="#services" className="inline-block py-1.5 hover:text-sky-400 transition-colors">
                   • {t('نقل عفش الشقق والفلل السكنية', 'Apartments & Villas Moving')}
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-sky-400 transition-colors">
+                <a href="#services" className="inline-block py-1.5 hover:text-sky-400 transition-colors">
                   • {t('نقل مقرات الشركات والمكاتب والعيادات', 'Corporate & Clinic Moving')}
                 </a>
               </li>
               <li>
-                <a href="#winch-section" className="hover:text-sky-400 transition-colors">
+                <a href="#winch-section" className="inline-block py-1.5 hover:text-sky-400 transition-colors">
                   • {t('أوناش رفع الأثاث الهيدروليكية (حتى الدور 25)', 'Hydraulic Winches (Up to Floor 25)')}
                 </a>
               </li>
               <li>
-                <a href="#packing-section" className="hover:text-sky-400 transition-colors">
+                <a href="#packing-section" className="inline-block py-1.5 hover:text-sky-400 transition-colors">
                   • {t('التغليف الأوروبي فائق الجودة والأمان', 'European Multi-Layer Packing')}
                 </a>
               </li>
               <li>
-                <a href="#packing-section" className="hover:text-sky-400 transition-colors">
+                <a href="#packing-section" className="inline-block py-1.5 hover:text-sky-400 transition-colors">
                   • {t('فك وتركيب التكييفات وشحن الفريون', 'AC Dismantling & Freon Servicing')}
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-sky-400 transition-colors">
+                <a href="#services" className="inline-block py-1.5 hover:text-sky-400 transition-colors">
                   • {t('سيارات نقل عفش مغلقة ومبطنة للمحافظات', 'Padded Closed Trucks to All Governorates')}
+                </a>
+              </li>
+              <li>
+                <a href="/articles/" className="inline-block py-1.5 text-amber-300 hover:text-amber-200 transition-colors">
+                  • {t('مقالات وأدلة نقل وتغليف الأثاث (موسوعة شاملة)', 'Moving & Packing SEO Guides Hub')}
                 </a>
               </li>
             </ul>
@@ -129,12 +102,12 @@ export const Footer: React.FC = () => {
 
           {/* Areas Coverage */}
           <div className="space-y-3">
-            <h4 className={`font-black text-base border-b pb-2 ${
+            <h2 className={`font-black text-lg sm:text-xl border-b pb-2 ${
               theme === 'light' ? 'text-slate-900 border-slate-200' : 'text-white border-blue-900/60'
             }`}>
               {t('مناطق نصل إليها سريعاً', 'Rapid ETA Areas')}
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            </h2>
+            <ul className="space-y-2.5 text-sm sm:text-base font-bold">
               <li>• {t('التجمع الخامس والقاهرة الجديدة', 'New Cairo & 5th Settlement')}</li>
               <li>• {t('مدينة نصر ومصر الجديدة والنزهة', 'Nasr City & Heliopolis')}</li>
               <li>• {t('الشيخ زايد و6 أكتوبر وحدائق الأهرام', 'Sheikh Zayed & 6th of October')}</li>
@@ -146,50 +119,49 @@ export const Footer: React.FC = () => {
 
           {/* Hotlines & Contact */}
           <div className="space-y-3">
-            <h4 className={`font-black text-base border-b pb-2 ${
+            <h2 className={`font-black text-lg sm:text-xl border-b pb-2 ${
               theme === 'light' ? 'text-slate-900 border-slate-200' : 'text-white border-blue-900/60'
             }`}>
               {t('تواصل معنا على مدار الساعة', 'Contact 24/7')}
-            </h4>
+            </h2>
             
             <div className="space-y-2 text-xs sm:text-sm">
               <a
-                href={`tel:${COMPANY_DATA.phones[0].number}`}
-                className={`flex items-center justify-between p-2 rounded-xl border transition-colors ${
+                href="tel:01233391255"
+                onClick={(e) => handlePhoneCallClick(e, 'tel:01233391255', 'أسفل الموقع (اتصال)')}
+                className={`flex items-center justify-between p-3 rounded-xl border transition-colors shadow-sm ${
                   theme === 'light'
-                    ? 'bg-slate-50 hover:bg-blue-50 border-slate-200 text-slate-800'
-                    : 'bg-[#031126] hover:bg-blue-950 border-blue-900/60 text-white'
+                    ? 'bg-amber-50/70 hover:bg-amber-100/70 border-amber-300 text-slate-800'
+                    : 'bg-[#031126] hover:bg-blue-950 border-amber-500/40 text-white'
                 }`}
               >
-                <span>{t('الخط الساخن:', 'Hotline:')}</span>
-                <span className="font-bold text-sky-400 font-mono" dir="ltr">{COMPANY_DATA.phones[0].number}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <Phone className="w-3.5 h-3.5 text-amber-500" />
+                  <span>{t('الخط الساخن الموحد (24 ساعة):', 'Unified 24/7 Hotline:')}</span>
+                </div>
+                <span className="font-black text-amber-500 font-mono text-base tracking-wider" dir="ltr">01233391255</span>
               </a>
 
               <a
-                href={`tel:${COMPANY_DATA.phones[1].number}`}
-                className={`flex items-center justify-between p-2 rounded-xl border transition-colors ${
+                href={`https://wa.me/${CONTACT_INFO.whatsappInternational}?text=${encodeURIComponent(
+                  t('السلام عليكم، أرغب في معرفة أسعار وباقات نقل العفش المناسبة مع رويال موفرز VIP', 'Hello, inquiry about moving packages & pricing.')
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center justify-between p-3 rounded-xl border transition-colors shadow-sm ${
                   theme === 'light'
-                    ? 'bg-slate-50 hover:bg-blue-50 border-slate-200 text-slate-800'
-                    : 'bg-[#031126] hover:bg-blue-950 border-blue-900/60 text-white'
+                    ? 'bg-emerald-50/70 hover:bg-emerald-100/70 border-emerald-300 text-slate-800'
+                    : 'bg-emerald-950/40 hover:bg-emerald-900/60 border-emerald-500/40 text-white'
                 }`}
               >
-                <span>{t('خدمة العملاء:', 'Customer Care:')}</span>
-                <span className="font-bold text-sky-400 font-mono" dir="ltr">{COMPANY_DATA.phones[1].number}</span>
+                <div className={`flex items-center gap-1.5 font-bold ${theme === 'light' ? 'text-emerald-700' : 'text-emerald-300'}`}>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>{t('واتساب الحجوزات السريعة:', 'WhatsApp Bookings:')}</span>
+                </div>
+                <span className={`font-black font-mono text-base tracking-wider ${theme === 'light' ? 'text-emerald-700' : 'text-emerald-300'}`} dir="ltr">01233391255</span>
               </a>
 
-              <a
-                href={`tel:${COMPANY_DATA.phones[2].number}`}
-                className={`flex items-center justify-between p-2 rounded-xl border transition-colors ${
-                  theme === 'light'
-                    ? 'bg-slate-50 hover:bg-blue-50 border-slate-200 text-slate-800'
-                    : 'bg-[#031126] hover:bg-blue-950 border-blue-900/60 text-white'
-                }`}
-              >
-                <span>{t('إدارة العمليات:', 'Operations:')}</span>
-                <span className="font-bold text-sky-400 font-mono" dir="ltr">{COMPANY_DATA.phones[2].number}</span>
-              </a>
-
-              <div className="flex items-center gap-2 text-xs text-slate-400 pt-1">
+              <div className="flex items-center gap-2 text-xs text-slate-300 pt-1">
                 <Clock className="w-3.5 h-3.5 text-sky-400" />
                 <span>{t('مواعيد العمل: 24 ساعة طوال أيام الأسبوع', 'Working Hours: 24/7 All Week')}</span>
               </div>
@@ -198,86 +170,16 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Google & Digital Ad Campaigns Readiness Card */}
-        <div className="p-5 rounded-3xl border bg-gradient-to-r from-blue-50 via-sky-50 to-indigo-50/80 border-blue-200 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm text-right">
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-700 to-sky-600 text-white flex items-center justify-center shrink-0 shadow-md">
-              <Globe className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="text-sm sm:text-base font-black text-blue-950 flex flex-wrap items-center gap-2">
-                <span>رابط الموقع الرسمي للإعلانات ومحركات البحث Google</span>
-                <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-full shadow-2xs">
-                  جاهز 100% للأرشفة والإعلانات
-                </span>
-              </div>
-              <div className="text-xs text-blue-800 font-mono mt-1 dir-ltr select-all break-all">
-                https://shelhaegypt.com
-              </div>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleCopyWebsiteLink}
-            className={`w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-black text-xs sm:text-sm transition-all shadow-md cursor-pointer whitespace-nowrap ${
-              copiedLink
-                ? 'bg-emerald-600 text-white scale-105'
-                : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105 active:scale-95'
-            }`}
-          >
-            {copiedLink ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4 text-white" />}
-            <span>{copiedLink ? 'تم نسخ الرابط بنجاح ✓' : 'نسخ رابط الموقع للحملات الإعلانية 📋'}</span>
-          </button>
-        </div>
-
-        {/* SEO Keywords Cloud */}
-        <div className={`pt-8 border-t space-y-3 ${
-          theme === 'light' ? 'border-slate-200' : 'border-blue-900/40'
-        }`}>
-          <div className="text-xs font-bold text-sky-400">
-            {t('كلمات البحث الدلالية ومحركات البحث (Google Ads & SEO):', 'Search Engine Keywords (Google Ads & SEO):')}
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {seoKeywords.map((kw, idx) => (
-              <span
-                key={idx}
-                className={`text-[11px] px-2 py-1 rounded border transition-colors ${
-                  theme === 'light'
-                    ? 'bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-700 border-slate-200'
-                    : 'bg-[#031126] hover:bg-blue-950 text-slate-400 hover:text-sky-300 border-blue-900/60'
-                }`}
-              >
-                {kw}
-              </span>
-            ))}
-          </div>
-        </div>
-
         {/* Bottom Bar */}
         <div className={`pt-6 border-t text-center text-xs flex flex-col sm:flex-row items-center justify-between gap-4 ${
-          theme === 'light' ? 'border-slate-200 text-slate-500' : 'border-blue-900/40 text-slate-500'
+          theme === 'light' ? 'border-slate-200 text-slate-600' : 'border-blue-900/40 text-slate-300'
         }`}>
           <div>
-            © {new Date().getFullYear()} {t('شركة شِلها لنقل وتغليف الأثاث - جميع الحقوق محفوظة.', 'Shilha Moving & Packing Company - All Rights Reserved.')}
+            © {new Date().getFullYear()} {t('شركة رويال موفرز لنقل وتغليف الأثاث VIP - جميع الحقوق محفوظة.', 'Shilha Moving & Packing Company - All Rights Reserved.')}
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                setRole('owner');
-                openEditorModal();
-              }}
-              className="text-amber-600 hover:text-amber-700 transition-colors cursor-pointer text-xs font-black underline flex items-center gap-1"
-              title="فتح لوحة المالك والمحرر للتحكم ببيانات الموقع"
-            >
-              <span>{isEditor ? '👑 لوحة المالك والمحرر (Owner & Editor)' : '🔐 دخول المالك (Owner Mode)'}</span>
-            </button>
-            <span className="text-slate-300">•</span>
-            <div className="flex items-center gap-1 text-sky-600">
-              <span>{t('صُنع باحترافية لخدمتكم بأعلى معايير الأمان والراحة', 'Crafted with premium safety & comfort standards')}</span>
-              <Heart className="w-3.5 h-3.5 text-blue-500 fill-blue-500" />
-            </div>
+          <div className={`flex items-center gap-1 ${theme === 'light' ? 'text-sky-700' : 'text-sky-300'}`}>
+            <span>{t('صُنع باحترافية لخدمتكم بأعلى معايير الأمان والراحة', 'Crafted with premium safety & comfort standards')}</span>
+            <Heart className="w-3.5 h-3.5 text-sky-400 fill-sky-400" />
           </div>
         </div>
 

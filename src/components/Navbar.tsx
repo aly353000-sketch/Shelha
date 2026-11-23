@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { handlePhoneCallClick } from '../utils/analytics';
 import { 
   Phone, 
   MessageCircle, 
@@ -7,21 +8,53 @@ import {
   Clock, 
   ChevronDown, 
   ArrowRight, 
-  Sparkles 
+  Sparkles,
+  Search,
+  MapPin,
+  Building2,
+  Compass,
+  BarChart3
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
-import { COMPANY_DATA } from '../data/companyData';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { useApp } from '../context/AppContext';
 
 interface NavbarProps {
-  onOpenCalculator: () => void;
+  onOpenSearch?: () => void;
   onOpenGoldenTips?: () => void;
+  onSelectArea?: (slug: string) => void;
+  onOpenBrandKit?: () => void;
+  onOpenConversions?: () => void;
+  isOwner?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTips }) => {
+export const Navbar: React.FC<NavbarProps> = ({ 
+  onOpenSearch, 
+  onOpenGoldenTips,
+  onSelectArea,
+  onOpenBrandKit,
+  onOpenConversions,
+  isOwner = false
+}) => {
   const { t, theme, lang } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [phonesDropdownOpen, setPhonesDropdownOpen] = useState(false);
+  const [areasDropdownOpen, setAreasDropdownOpen] = useState(false);
+
+  // Discreet secret 5-tap on VIP badge to activate owner dashboard
+  const [secretTaps, setSecretTaps] = useState(0);
+  const handleSecretTap = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSecretTaps(prev => {
+      const next = prev + 1;
+      if (next >= 5) {
+        if (onOpenConversions) onOpenConversions();
+        return 0;
+      }
+      return next;
+    });
+    setTimeout(() => setSecretTaps(0), 3000);
+  };
 
   // Smart Navbar Hide on Scroll Down, Show on Scroll Up
   const [isVisible, setIsVisible] = useState(true);
@@ -49,22 +82,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTi
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleGoBack = () => {
-    if (window.history.length > 1) {
-      window.history.back();
+  const luxuryAreasList = [
+    { name: 'نقل عفش الشيخ زايد', slug: 'sheikh-zayed', badge: 'كمبوندات النخبة 🏰' },
+    { name: 'نقل عفش التجمع الخامس', slug: 'new-cairo', badge: 'شقق وفلل VIP 👑' },
+    { name: 'نقل عفش 6 أكتوبر', slug: 'october', badge: 'غرب سوميد والحدائق 🛡️' },
+    { name: 'نقل عفش مدينتي والرحاب', slug: 'madinaty', badge: 'طلعت مصطفى 🌴' },
+    { name: 'نقل عفش العاصمة الإدارية', slug: 'new-capital', badge: 'مقرات وفلل R7 & R8 🏛️' },
+    { name: 'نقل عفش الساحل الشمالي والعلمين', slug: 'north-coast', badge: 'مراسي وهاسيندا 🌊' },
+    { name: 'نقل عفش المعادي والزمالك', slug: 'maadi-zamalek', badge: 'مبانٍ كلاسيكية 🏛️' },
+  ];
+
+  const handleAreaClick = (slug: string) => {
+    setAreasDropdownOpen(false);
+    setMobileMenuOpen(false);
+    if (onSelectArea) {
+      onSelectArea(slug);
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.location.hash = `#area/${slug}`;
     }
   };
 
-  const navLinks = [
+  const desktopNavLinks = [
     { label: t('الرئيسية', 'Home'), href: '#hero' },
-    { label: t('خدماتنا', 'Services'), href: '#services' },
+    { label: t('الخدمات', 'Services'), href: '#interactive-services' },
     { label: t('الونش الهيدروليكي', 'Hydraulic Winch'), href: '#winch-section' },
-    { label: t('قبل وبعد التغليف', 'Before & After'), href: '#case-study-article' },
-    { label: t('التغليف والفك', 'Packing & AC'), href: '#packing-section' },
-    { label: t('نصائح قبل النقل', 'Moving Tips'), href: '#moving-tips' },
-    { label: t('مناطق التغطية', 'Areas'), href: '#areas' },
+    { label: t('معرض الأعمال', 'Gallery'), href: '#gallery' },
+    { label: t('مقالات وأدلة', 'Moving Guides'), href: '/articles/' },
+    { label: t('الأسئلة الشائعة', 'FAQs'), href: '#faqs' },
+  ];
+
+  const mobileNavLinks = [
+    { label: t('الرئيسية', 'Home'), href: '#hero' },
+    { label: t('مقالات وأدلة نقل الأثاث 📖', 'Moving Guides & Articles 📖'), href: '/articles/' },
+    { label: t('مقرنا بالمقطم 📍', 'Location'), href: '#location-section' },
+    { label: t('خدمات الشقق والفلل VIP', 'VIP Moving Services'), href: '#services' },
+    { label: t('خدمات تفاعلية 🔄', 'Interactive Services'), href: '#interactive-services' },
+    { label: t('كمبوندات نخدمها 🏰', 'Compounds'), href: '#luxury-compounds' },
+    { label: t('الونش الهيدروليكي', 'Hydraulic Winch'), href: '#winch-section' },
     { label: t('معرض الأعمال', 'Gallery'), href: '#gallery' },
     { label: t('الأسئلة الشائعة', 'FAQs'), href: '#faqs' },
   ];
@@ -75,85 +129,74 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTi
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      {/* Top Banner with Royal Blue Gradient */}
-      <div className="bg-gradient-to-r from-blue-700 via-sky-600 to-blue-800 text-white font-medium text-xs sm:text-sm py-2 px-3 sm:px-6 shadow-sm">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="bg-white text-blue-900 font-black px-2 py-0.5 rounded-full text-xs shadow-sm">
-              {t('عرض خاص اليوم ⚡', 'Special Deal Today ⚡')}
-            </span>
-            <span className="font-bold">
-              {t('خصم 10% على باقات نقل الفلل والشقق + معاينة مجانية!', '10% OFF moving packages + free site inspection in Cairo & Giza!')}
-            </span>
+      {/* Top Banner with Royal Blue Gradient (WCAG AA compliant) */}
+      <div className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white font-medium text-xs sm:text-sm py-2 px-3 sm:px-6 shadow-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 font-bold">
+            <Clock className="w-4 h-4 text-sky-200" />
+            <span>{t('متاحون 24 ساعة طوال الأسبوع', '24/7 Available')}</span>
           </div>
 
-          <div className="flex items-center gap-4 text-xs sm:text-sm">
-            <div className="hidden md:flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-sky-200" />
-              <span>{t('متاحون 24 ساعة طوال الأسبوع', '24/7 Available')}</span>
-            </div>
-            <div className="flex items-center gap-2 font-bold">
-              <Phone className="w-3.5 h-3.5 text-sky-200" />
-              <span>{t('احجز الآن:', 'Call:')}</span>
-              <a
-                href={`tel:${COMPANY_DATA.phones[0].number}`}
-                className="underline hover:text-sky-200 transition-colors font-mono"
-                dir="ltr"
-              >
-                {COMPANY_DATA.phones[0].number}
-              </a>
-            </div>
+          <div className="flex items-center gap-2 sm:gap-3 font-bold">
+            <Phone className="w-4 h-4 text-sky-200" />
+            <span>{t('الخط الساخن الموحد:', 'Direct Hotline:')}</span>
+            <a
+              href="tel:01233391255"
+              onClick={(e) => handlePhoneCallClick(e, 'tel:01233391255', 'الشريط العلوي (اتصال)')}
+              className="inline-flex items-center py-1 underline hover:text-sky-200 transition-colors font-mono text-sm sm:text-base font-black tracking-wider"
+              dir="ltr"
+            >
+              01233391255
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar with Blue / White Theme styling */}
-      <nav
-        className={`border-b transition-colors duration-300 ${
-          theme === 'light'
-            ? 'bg-white/95 backdrop-blur-md border-slate-200 text-slate-800'
-            : 'bg-[#030d20]/95 backdrop-blur-md border-blue-900/40 text-white'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      {/* Main Navbar with Unified Royal Navy Blue Luxury Styling */}
+      <nav aria-label={t('التنقل الرئيسي', 'Main navigation')} className="border-b transition-colors duration-300 bg-[#020b18]/95 backdrop-blur-xl border-blue-900/60 text-white sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-3">
           
-          {/* Logo & Back Arrow Container */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Back Arrow Button (سهم الرجوع والعودة) */}
-            <button
-              type="button"
-              onClick={handleGoBack}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs sm:text-sm font-bold transition-all shadow-sm cursor-pointer group ${
-                theme === 'light'
-                  ? 'bg-slate-100 hover:bg-blue-50 border-slate-300 text-slate-700 hover:text-blue-600'
-                  : 'bg-blue-950/70 hover:bg-blue-900/80 border-blue-800/60 text-slate-200 hover:text-sky-300'
-              }`}
-              title={t('الرجوع للصفحة السابقة', 'Go back')}
-              aria-label={t('الرجوع للصفحة السابقة', 'Go back')}
-            >
-              <ArrowRight className={`w-4 h-4 text-sky-400 transition-transform ${lang === 'en' ? 'rotate-180 group-hover:translate-x-1' : 'group-hover:-translate-x-1'}`} />
-              <span>{t('رجوع', 'Back')}</span>
-            </button>
+          {/* Brand Logo & Name (Royal Movers VIP) - Compact, Crisp & Non-Wrapping */}
+          <a href="#hero" className="flex items-center gap-2.5 sm:gap-3 text-right group select-none py-1 shrink-0">
+            <div className="relative shrink-0">
+              <img 
+                src="/assets/logos/royal_movers_logo_sm.webp" 
+                alt="ROYAL MOVERS VIP Logo" 
+                width={52}
+                height={52}
+                decoding="async"
+                className="w-11 h-11 sm:w-13 sm:h-13 object-contain rounded-xl border-2 border-amber-400/80 shadow-lg bg-white p-0.5 group-hover:scale-105 transition-transform" 
+              />
+              <span 
+                onClick={handleSecretTap}
+                className="absolute -bottom-1 -left-1 bg-amber-500 text-slate-950 font-black text-[9px] px-1 py-0.5 rounded font-mono shadow-xs border border-white cursor-pointer select-none active:scale-90 transition-transform"
+                title="VIP"
+              >
+                VIP
+              </span>
+            </div>
 
-            {/* Brand Logo & Name (Arabic only, luxurious and elegant) */}
-            <a href="#hero" className="flex flex-col text-right group select-none whitespace-nowrap">
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl sm:text-3xl font-black tracking-tight text-blue-950 group-hover:text-blue-700 transition-colors leading-none">
-                  شِلـهـا
+            <div className="flex flex-col justify-center shrink-0">
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg sm:text-xl xl:text-2xl font-black tracking-tight leading-none font-alexandria text-white group-hover:text-amber-300 transition-colors whitespace-nowrap">
+                  رويال موفرز
                 </span>
-                <span className="text-xs sm:text-sm font-extrabold text-blue-700 leading-none">
-                  لنقل وتغليف الأثاث
+                <span className="text-[10px] sm:text-xs font-black tracking-wider text-slate-950 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 border border-amber-300 px-1.5 py-0.5 rounded-md font-mono shadow-sm shrink-0">
+                  VIP
                 </span>
               </div>
-              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 mt-1">
-                الشركة الرائدة الأولى لنقل العفش في مصر
-              </span>
-            </a>
-          </div>
+
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="text-[10px] sm:text-xs font-black tracking-widest text-amber-300 font-mono uppercase whitespace-nowrap" dir="ltr">
+                  ROYAL MOVERS VIP
+                </span>
+              </div>
+            </div>
+          </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-5">
-            {navLinks.map((link) => (
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
+            {desktopNavLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -163,26 +206,76 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTi
                     onOpenGoldenTips();
                   }
                 }}
-                className="text-xs font-bold transition-colors py-1 text-slate-700 hover:text-blue-600"
+                className="text-xs xl:text-sm font-bold transition-colors py-1 text-slate-100 hover:text-amber-300 whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
+
+            {/* Desktop Areas Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setAreasDropdownOpen(!areasDropdownOpen)}
+                className="flex items-center gap-1.5 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/50 text-amber-300 px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap"
+                aria-expanded={areasDropdownOpen}
+              >
+                <Compass className="w-3.5 h-3.5 text-amber-400" />
+                <span>أهم المناطق</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${areasDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {areasDropdownOpen && (
+                <div 
+                  className={`absolute left-0 mt-2 w-72 rounded-2xl shadow-2xl py-2 z-50 text-right border ${
+                    theme === 'light' ? 'bg-white border-slate-200' : 'bg-[#031126] border-blue-800'
+                  }`}
+                >
+                  <div className={`px-4 py-2 text-xs font-black border-b ${
+                    theme === 'light' ? 'text-slate-500 border-slate-100' : 'text-slate-400 border-blue-900/60'
+                  }`}>
+                    اختر منطقة للاطلاع على كافة التفاصيل والمميزات:
+                  </div>
+
+                  {luxuryAreasList.map((item) => (
+                    <button
+                      key={item.slug}
+                      type="button"
+                      onClick={() => handleAreaClick(item.slug)}
+                      className={`w-full text-right flex items-center justify-between px-4 py-2.5 text-xs font-black transition-colors cursor-pointer ${
+                        theme === 'light' 
+                          ? 'hover:bg-blue-50 text-slate-800 hover:text-blue-700' 
+                          : 'hover:bg-blue-900/50 text-slate-200 hover:text-amber-300'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                        <span>{item.name}</span>
+                      </div>
+                      <span className="text-[10px] text-sky-600 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/60 px-2 py-0.5 rounded-md font-bold">
+                        {item.badge}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
           </div>
 
-          {/* Hotline & Instant Calculator CTA */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Desktop Hotline & Search Button */}
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             {/* Phone numbers trigger */}
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setPhonesDropdownOpen(!phonesDropdownOpen)}
-                className="flex items-center gap-2 border px-3 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 border-slate-300 text-slate-800 shadow-sm"
+                className="flex items-center gap-1.5 border px-2.5 py-2 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 border-slate-300 text-slate-800 shadow-sm cursor-pointer whitespace-nowrap"
                 aria-expanded={phonesDropdownOpen}
                 aria-label="عرض أرقام الهواتف المتاحة"
               >
                 <Phone className="w-3.5 h-3.5 text-blue-600" />
-                <span dir="ltr">{COMPANY_DATA.phones[0].number}</span>
+                <span dir="ltr">{CONTACT_INFO.primaryPhone}</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${phonesDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -197,14 +290,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTi
                   }`}>
                     {t('أرقام التواصل والحجوزات الفورية', 'Direct Contact & Booking Lines')}
                   </div>
-                  {COMPANY_DATA.phones.map((phone) => (
+                  {CONTACT_INFO.phones.map((phone) => (
                     <a
                       key={phone.number}
                       href={`tel:${phone.number}`}
+                      onClick={(e) => {
+                        setPhonesDropdownOpen(false);
+                        handlePhoneCallClick(e, `tel:${phone.number}`, 'قائمة أرقام الهيدر');
+                      }}
                       className={`flex items-center justify-between px-3 py-2 text-xs transition-colors ${
                         theme === 'light' ? 'hover:bg-slate-50 text-slate-800' : 'hover:bg-blue-950/60 text-slate-200'
                       }`}
-                      onClick={() => setPhonesDropdownOpen(false)}
                     >
                       <span className="text-slate-400">{phone.label}</span>
                       <span className="font-bold text-sky-400" dir="ltr">{phone.number}</span>
@@ -212,12 +308,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTi
                   ))}
                   <div className={`p-2 border-t ${theme === 'light' ? 'border-slate-100' : 'border-slate-800'}`}>
                     <a
-                      href={`https://wa.me/20${COMPANY_DATA.whatsappDefault}?text=${encodeURIComponent(
-                        t('السلام عليكم، استفسار عن خدمات نقل العفش وتغليف الأثاث مع شركة شِلها', 'Hello, I want to inquire about moving and packing services.')
+                      href={`https://wa.me/${CONTACT_INFO.whatsappInternational}?text=${encodeURIComponent(
+                        t('السلام عليكم، استفسار عن خدمات وأسعار نقل وتغليف أثاث الشقق والفلل مع رويال موفرز VIP', 'Hello, I want to inquire about VIP apartment & villa moving services and pricing with Royal Movers.')
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl py-2 text-xs font-bold transition-colors"
+                      className="flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl py-2 text-xs font-bold transition-colors"
                     >
                       <WhatsAppIcon className="w-3.5 h-3.5" />
                       <span>{t('تواصل واتساب مباشرة', 'WhatsApp Directly')}</span>
@@ -227,69 +323,184 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenGoldenTi
               )}
             </div>
 
-            {/* Instant Calculator CTA */}
+            {/* Brand Kit & Logos Hub Trigger (Desktop - Owner Only) */}
+            {onOpenBrandKit && isOwner && (
+              <button
+                type="button"
+                onClick={onOpenBrandKit}
+                className="flex items-center gap-1 px-2.5 py-2 rounded-xl border border-amber-400/50 bg-amber-500/15 hover:bg-amber-500 text-amber-300 hover:text-slate-950 font-black text-xs shadow-sm transition-all cursor-pointer whitespace-nowrap"
+                title="لوجو وهوية رويال موفرز VIP"
+              >
+                <span>👑</span>
+                <span>هوية رويال</span>
+              </button>
+            )}
+
+            {/* Conversions Analytics Dashboard (Desktop - Owner Only) */}
+            {onOpenConversions && isOwner && (
+              <button
+                type="button"
+                onClick={onOpenConversions}
+                className="flex items-center gap-1 px-2.5 py-2 rounded-xl border border-emerald-400/50 bg-emerald-500/15 hover:bg-emerald-500 text-emerald-300 hover:text-slate-950 font-black text-xs shadow-sm transition-all cursor-pointer whitespace-nowrap"
+                title="لوحة تحكم إحصائيات وتحويلات الإعلانات (خاصة بالمالك)"
+              >
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>التحويلات</span>
+              </button>
+            )}
+
+            {/* Search Icon Button (علامة العدسة) */}
             <button
               type="button"
-              onClick={onOpenCalculator}
-              className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-500 hover:to-sky-400 text-white px-4 py-2 rounded-xl text-xs font-black shadow-md hover:shadow-sky-500/25 transition-all flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95"
+              onClick={onOpenSearch}
+              className="p-2 rounded-xl border border-blue-800 bg-slate-900 hover:bg-blue-950 text-amber-400 shadow-sm transition-all flex items-center justify-center cursor-pointer shrink-0"
+              aria-label="بحث في الموقع"
+              title="بحث في الموقع"
             >
-              <span>{t('احسب التكلفة', 'Calculate Price')}</span>
-              <span className="bg-white/20 text-white text-[10px] px-1.5 py-0.5 rounded font-black">
-                {t('فوري', 'Instant')}
-              </span>
+              <Search className="w-4 h-4 text-amber-400" />
             </button>
           </div>
 
-          {/* Mobile menu and tools */}
-          <div className="flex sm:hidden items-center gap-2">
+          {/* Mobile menu and tools - visible on all screens below lg */}
+          <div className="flex lg:hidden items-center gap-2">
+            {/* Conversions Tracker Trigger (Mobile - Owner Only) */}
+            {onOpenConversions && isOwner && (
+              <button
+                type="button"
+                onClick={onOpenConversions}
+                className="p-2.5 rounded-xl border border-emerald-400/60 bg-emerald-500/15 hover:bg-emerald-500 text-emerald-300 hover:text-slate-950 font-black text-xs shadow-sm transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+                aria-label="التحويلات"
+                title="إحصائيات التحويلات"
+              >
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span className="text-[10px] font-black hidden xs:inline">التحويلات</span>
+              </button>
+            )}
+
+            {/* Brand Kit Trigger (Mobile - Owner Only) */}
+            {onOpenBrandKit && isOwner && (
+              <button
+                type="button"
+                onClick={onOpenBrandKit}
+                className="p-2.5 rounded-xl border border-amber-400/80 bg-amber-500/15 hover:bg-amber-500 text-amber-300 hover:text-slate-950 font-black text-xs shadow-md transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+                aria-label="لوجو رويال VIP"
+                title="لوجوهات رويال موفرز VIP"
+              >
+                <span className="text-sm">👑</span>
+                <span className="text-[11px] font-black hidden xs:inline">اللوجو</span>
+              </button>
+            )}
+
             <button
               type="button"
-              onClick={onOpenCalculator}
-              className="bg-gradient-to-r from-blue-600 to-sky-500 text-white px-3 py-1.5 rounded-xl text-xs font-black shadow-sm"
+              onClick={onOpenSearch}
+              className="p-2.5 rounded-xl border border-blue-700/80 bg-[#071d49] hover:bg-[#0c2b6b] text-amber-300 shadow-md transition-all active:scale-95 flex items-center justify-center cursor-pointer"
+              aria-label="بحث في الموقع"
+              title="بحث في الموقع"
             >
-              {t('احسب السعر', 'Quote')}
+              <Search className="w-5 h-5 text-amber-400" />
             </button>
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl border bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800"
-              aria-label={mobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
+              className="p-2.5 sm:px-3 sm:py-2.5 rounded-xl border border-blue-700/80 bg-[#071d49] hover:bg-[#0c2b6b] text-white shadow-md flex items-center gap-1.5 font-black text-xs cursor-pointer active:scale-95 transition-all"
+              aria-label={mobileMenuOpen ? 'إغلاق القائمة' : 'أقسام الموقع'}
+              title="أقسام الموقع"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 text-rose-400 stroke-[2.5]" />
+              ) : (
+                <Menu className="w-5 h-5 text-amber-400 stroke-[2.5]" />
+              )}
+              <span className="hidden xs:inline sm:inline text-xs font-black text-white">
+                {mobileMenuOpen ? 'إغلاق' : 'الأقسام'}
+              </span>
             </button>
           </div>
 
         </div>
 
-        {/* Mobile dropdown menu */}
+        {/* Mobile dropdown menu (Drawer) */}
         {mobileMenuOpen && (
-          <div className={`lg:hidden px-4 pt-3 pb-6 space-y-3 border-b ${
-            theme === 'light' ? 'bg-white border-slate-200' : 'bg-[#030d20] border-blue-900/60'
-          }`}>
+          <div className="lg:hidden px-4 pt-4 pb-8 space-y-4 border-b bg-[#020b18] border-blue-900/80 text-white max-h-[80vh] overflow-y-auto">
             <div className="grid grid-cols-2 gap-2 pb-3 border-b border-slate-800/40">
               <a
-                href={`tel:${COMPANY_DATA.phones[0].number}`}
-                className="flex items-center justify-center gap-2 bg-blue-600 text-white py-2.5 rounded-xl font-bold text-xs"
+                href={`tel:${CONTACT_INFO.primaryPhone}`}
+                onClick={(e) => handlePhoneCallClick(e, `tel:${CONTACT_INFO.primaryPhone}`, 'قائمة الموبايل (اتصال)')}
+                className="flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-600 text-white py-2.5 rounded-xl font-bold text-xs"
               >
                 <Phone className="w-4 h-4" />
                 <span>{t('اتصال سريع', 'Call')}</span>
               </a>
               <a
-                href={`https://wa.me/20${COMPANY_DATA.whatsappDefault}?text=${encodeURIComponent(
-                  t('السلام عليكم، استفسار عن خدمات نقل وتغليف الأثاث مع شركة شِلها', 'Hello, inquiry about moving services')
+                href={`https://wa.me/${CONTACT_INFO.whatsappInternational}?text=${encodeURIComponent(
+                  t('السلام عليكم، استفسار عن خدمات نقل وتغليف الأثاث مع رويال موفرز VIP', 'Hello, inquiry about Royal Movers VIP')
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-xs"
+                className="flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-xs"
               >
                 <WhatsAppIcon className="w-4 h-4 text-white" />
                 <span>{t('واتساب مباشر', 'WhatsApp')}</span>
               </a>
             </div>
 
+            {/* Conversions Analytics Card in Mobile Drawer (Owner Only) */}
+            {onOpenConversions && isOwner && (
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenConversions();
+                }}
+                className="w-full flex items-center justify-between p-3 rounded-2xl bg-[#041a22] border border-emerald-400/60 text-emerald-300 font-black text-xs shadow-md transition-all active:scale-95 text-right cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                    <BarChart3 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-black text-emerald-300">لوحة قياس التحويلات والمكالمات اليومية</div>
+                    <div className="text-[10px] text-slate-300 font-medium">متابعة دقيقة لنقرات الاتصال والواتساب مع Google Ads</div>
+                  </div>
+                </div>
+                <span className="text-[11px] bg-emerald-500 text-slate-950 font-black px-2 py-0.5 rounded-lg">فتح</span>
+              </button>
+            )}
+
+            {/* DEDICATED LUXURY AREAS LIST IN MOBILE (Direct from Khatwa Video) */}
+            <div className="space-y-2 p-3 rounded-2xl bg-gradient-to-b from-blue-950/20 to-amber-500/10 border border-amber-400/30">
+              <div className="flex items-center gap-2 text-xs font-black text-amber-600 dark:text-amber-400 px-1">
+                <Compass className="w-4 h-4 text-amber-500" />
+                <span>أهم المناطق والكمبوندات (شقق وفلل):</span>
+              </div>
+              <div className="grid grid-cols-1 gap-1.5">
+                {luxuryAreasList.map((area) => (
+                  <button
+                    key={area.slug}
+                    type="button"
+                    onClick={() => handleAreaClick(area.slug)}
+                    className="w-full flex items-center justify-between text-right p-2.5 rounded-xl bg-white dark:bg-blue-950/70 border border-slate-200 dark:border-blue-900/60 text-xs font-black text-slate-800 dark:text-slate-100 hover:border-amber-400 cursor-pointer shadow-2xs"
+                  >
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400 shrink-0" />
+                      <span>{area.name}</span>
+                    </div>
+                    <span className="text-[10px] text-amber-700 dark:text-amber-300 font-bold">
+                      عرض التفاصيل 👈
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* General Nav Links */}
             <div className="space-y-1">
-              {navLinks.map((link) => (
+              <div className="text-xs font-bold text-slate-400 px-3 py-1">
+                أقسام الموقع:
+              </div>
+              {mobileNavLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

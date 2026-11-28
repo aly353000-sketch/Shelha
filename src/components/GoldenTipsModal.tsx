@@ -266,7 +266,7 @@ export const GoldenTipsModal: React.FC<GoldenTipsModalProps> = ({ isOpen, onClos
           theme === 'light' ? 'bg-slate-50 border-slate-200' : 'bg-slate-900/80 border-blue-900/60'
         }`}>
           <div className="text-xs text-slate-400 text-center sm:text-right">
-            <span>💡 لديك استفسار بخصوص تجهيز شقتك؟ فريق رويال موفرز يقدّم استشارة مجانية 24 ساعة.</span>
+            <span>💡 لديك استفسار بخصوص تجهيز شقتك؟ فريق رويال موفرز يقدّم استشارة 24 ساعة.</span>
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">

@@ -7,9 +7,10 @@
  * 3. Additional truck adds 5000 EGP and automatically includes 5 workers (5000 ج.م للسيارة والـ 5 عمال معاً).
  * 4. Furniture dismantling & assembly (فك وتركيب): +300 EGP per room.
  * 5. Packaging (تغليف): +400 EGP per room. Packing 3 rooms adds 2 workers (+2 عمال لكل 3 غرف تغليف).
- * 6. AC dismantling/assembly: 800 EGP per unit + 1 specialist technician (سعر فك و تركيب التكييف ٨٠٠).
+ * 6. AC dismantling/assembly: 1200 EGP per unit + 1 specialist technician (سعر فك و تركيب التكييف ١٢٠٠).
  * 7. Hydraulic Winch service: 2,500 EGP (زود سعر خدمة الونش ل ٢٥٠٠) and strictly optional.
  * 8. Packaging materials & cartons added to total cost dynamically without exposing unit prices to the client.
+ * 9. Appliances dismantling (not AC): 200 EGP per appliance (فك الجهاز ٢٠٠ جنيه ماعدا التكييف).
  */
 
 import { calculatePackagingTotal } from '../data/packagingCatalog';
@@ -26,13 +27,14 @@ export interface QuoteRequest {
   toArea: string;
   isGovernorate: boolean;
   needsWinch: boolean;
-  acUnitsCount: number; // فك وتركيب تكييف (800 EGP/unit + tech)
+  acUnitsCount: number; // فك وتركيب تكييف (1200 EGP/unit + tech)
   needsDismantling?: boolean; // فك وتركيب غرف الأثاث
   dismantleRoomsCount?: number; // 300 EGP per room
   needsPackaging?: boolean; // تغليف
   packedRoomsCount?: number; // 400 EGP per room (3 rooms adds 2 workers)
   needsVipPackaging?: boolean;
-  needsAppliancesTechnician?: boolean; // فك وتركيب أجهزة وشاشات ونجف (500 EGP + tech)
+  needsAppliancesTechnician?: boolean; // فك أجهزة وشاشات ونجف (200 EGP لكل جهاز، غير التكييف)
+  appliancesCount?: number; // عدد الأجهزة المطلوب فكها (200 EGP/جهاز، التكييف محسوب منفصل)
   needsKitchenDismantling?: boolean; // فك وتركيب مطابخ (600 EGP)
   packagingItems?: Record<string, number>; // كراتين ومواد تغليف مختارة تضاف للتوتال بدون إظهار الأسعار الفردية
 }
@@ -114,17 +116,20 @@ export function calculateMovingQuote(req: QuoteRequest): QuoteEstimate {
   minBase += packagingCost;
   maxBase += packagingCost;
 
-  // AC dismantling & assembly: 800 EGP per unit (سعر فك و تركيب التكييف ٨٠٠)
+  // AC dismantling & assembly: 1200 EGP per unit (سعر فك و تركيب التكييف ١٢٠٠)
   if (req.acUnitsCount > 0) {
-    const acCost = req.acUnitsCount * 800;
+    const acCost = req.acUnitsCount * 1200;
     minBase += acCost;
     maxBase += acCost;
   }
 
-  // Appliances / electrician technician (screens, chandeliers, heaters): 500 EGP (optional)
+  // Appliances dismantling (screens, chandeliers, heaters, washers): 200 EGP per appliance, AC excluded (AC priced above)
+  let appliancesCount = 0;
   if (req.needsAppliancesTechnician) {
-    minBase += 500;
-    maxBase += 500;
+    appliancesCount = req.appliancesCount && req.appliancesCount > 0 ? req.appliancesCount : 1;
+    const appliancesCost = appliancesCount * 200;
+    minBase += appliancesCost;
+    maxBase += appliancesCost;
   }
 
   // Kitchen dismantling & assembly: 600 EGP (optional)
@@ -212,15 +217,15 @@ export function calculateMovingQuote(req: QuoteRequest): QuoteEstimate {
     `• سيارات النقل: ${trucksCount} سيارة مبطنة (${trucksCount * 5} عمال أساسي)\n` +
     `• فك وتركيب الأثاث: ${dismantleRooms > 0 ? `${dismantleRooms} غرفة (+${dismantleCost} ج.م)` : 'غير مطلوب'}\n` +
     `• تغليف الأثاث بالبابلز والكرتون: ${packedRooms > 0 ? `${packedRooms} غرفة (+${packagingCost} ج.م مع ${packingCrew} عمال تغليف إضافيين)` : 'غير مطلوب'}${packagingNote}\n` +
-    `• فك وتركيب تكييفات: ${req.acUnitsCount > 0 ? `${req.acUnitsCount} أجهزة (مع فني تكييف متخصص بسعر 800 ج.م/جهاز)` : 'غير مطلوب'}\n` +
-    `• فني أجهزة وكهرباء: ${req.needsAppliancesTechnician ? 'مطلوب (+فني كهرباء)' : 'غير مطلوب'}\n` +
+    `• فك وتركيب تكييفات: ${req.acUnitsCount > 0 ? `${req.acUnitsCount} أجهزة (مع فني تكييف متخصص بسعر 1200 ج.م/جهاز)` : 'غير مطلوب'}\n` +
+    `• فك أجهزة (شاشات/ثريات/سخانات): ${appliancesCount > 0 ? `${appliancesCount} جهاز × 200 ج.م (+فني كهرباء)` : 'غير مطلوب'}\n` +
     `• فك وتركيب مطبخ: ${req.needsKitchenDismantling ? 'مطلوب' : 'غير مطلوب'}\n` +
     `• ونش هيدروليكي: ${includeWinch ? 'نعم مطلوب (2,500 ج.م)' : 'غير مطلوب (نقل يدوي/مصعد)'}\n` +
     `• من: ${req.fromArea} (الدور ${req.fromFloor})\n` +
     `• إلى: ${req.toArea} (الدور ${req.toFloor})\n` +
     `• إجمالي طاقم العمل: ${totalCrew} عمال وفنيين محترفين\n` +
     `• التكلفة التقديرية بالموقع: ${minPrice.toLocaleString('ar-EG')} - ${maxPrice.toLocaleString('ar-EG')} ج.م\n` +
-    `برجاء تأكيد الموعد والمعاينة المجانية.`
+    `برجاء تأكيد الموعد والمعاينة المسبقة.`
   );
 
   return {

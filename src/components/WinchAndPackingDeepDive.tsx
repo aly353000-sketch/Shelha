@@ -99,7 +99,7 @@ export const WinchAndPackingDeepDive: React.FC = () => {
                   className="font-black px-7 py-4 rounded-2xl text-base sm:text-lg flex items-center gap-2.5 border bg-emerald-600 hover:bg-emerald-500 text-white transition-all hover:scale-105 active:scale-95 shadow-md"
                 >
                   <WhatsAppIcon className="w-5 h-5 text-white" />
-                  <span>معاينة مجانية وتحديد موعد الونش</span>
+                  <span>معاينة مسبقة وتحديد موعد الونش</span>
                 </a>
               </div>
             </div>
@@ -214,7 +214,7 @@ export const WinchAndPackingDeepDive: React.FC = () => {
                   <span>تغليف أوروبي شامل وفنيو تكييف وكهرباء</span>
                 </span>
                 <span className="bg-amber-100 text-amber-900 border border-amber-300 px-3 py-1 rounded-full text-xs font-black shadow-xs">
-                  فك وتركيب التكييف ٨٠٠ ج.م للوحدة ❄️
+                  فك وتركيب التكييف ١٢٠٠ ج.م للوحدة ❄️
                 </span>
               </div>
 
@@ -223,13 +223,13 @@ export const WinchAndPackingDeepDive: React.FC = () => {
               </h2>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                كل قطعة أثاث لها خامات التغليف المخصصة لها: نستخدم بابلز الفيروز الثقيل للزجاج والتحف، كراتين دوبلكس 5 طبقات جديدة للملابس والمطبخ، فوم عازل للشاشات، وشنط قماشية بسحاب للمفروشات. كما يضم طاقمنا فنيين تكييف وهندسة كهرباء لفك التكييف مع حفظ شحنة الفريون وتركيبه فورياً بسعر ٨٠٠ ج.م للوحدة.
+                كل قطعة أثاث لها خامات التغليف المخصصة لها: نستخدم بابلز الفيروز الثقيل للزجاج والتحف، كراتين دوبلكس 5 طبقات جديدة للملابس والمطبخ، فوم عازل للشاشات، وشنط قماشية بسحاب للمفروشات. كما يضم طاقمنا فنيين تكييف وهندسة كهرباء لفك التكييف مع حفظ شحنة الفريون وتركيبه فورياً بسعر ١٢٠٠ ج.م للوحدة.
               </p>
 
               <div className="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
                 {[
                   'تغليف الأطقم الصيني والكريستالات داخل كراتين 5 راق مبطنة بفقاقيع بابلز',
-                  'فك وتركيب التكييفات الاسبليت والمركزي بسعر 800 ج.م مع الحفاظ على الفريون',
+                  'فك وتركيب التكييفات الاسبليت والمركزي بسعر 1200 ج.م مع الحفاظ على الفريون',
                   'تثبيت الشاشات الجدارية والنجف الكريستال وتوصيل الغسالات والسخانات بنفس اليوم',
                   'سيارات مغلقة مبطنة بشرائح خشبية سويدي وأحزمة ربط لمنع أي اهتزاز أثناء السفر',
                 ].map((item, idx) => (

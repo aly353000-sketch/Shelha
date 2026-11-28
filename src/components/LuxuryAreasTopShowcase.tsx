@@ -1,6 +1,5 @@
 import React from 'react';
 import { MapPin, ChevronLeft, Sparkles, Building2, ShieldCheck, Compass } from 'lucide-react';
-import { LUXURY_AREAS_DATA } from '../data/luxuryAreasData';
 
 interface LuxuryAreasTopShowcaseProps {
   onSelectArea: (slug: string) => void;

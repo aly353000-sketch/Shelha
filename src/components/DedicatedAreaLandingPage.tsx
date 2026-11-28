@@ -59,9 +59,9 @@ export const DedicatedAreaLandingPage: React.FC<DedicatedAreaLandingPageProps> =
     },
     {
       title: 'فك وتركيب التكييفات',
-      desc: 'فنيو تكييف معتمدون مع حفظ شحنة الفريون بـ 800 ج للوحدة.',
+      desc: 'فنيو تكييف معتمدون مع حفظ شحنة الفريون بـ 1200 ج للوحدة.',
       icon: Wind,
-      badge: '800 ج.م للوحدة ❄️',
+      badge: '1200 ج.م للوحدة ❄️',
     },
     {
       title: 'تغليف الأثاث الشامل',
@@ -86,7 +86,7 @@ export const DedicatedAreaLandingPage: React.FC<DedicatedAreaLandingPageProps> =
   const handleWhatsAppBooking = (extraContext?: string) => {
     const text = extraContext 
       ? `السلام عليكم، أرغب في حجز نقل أثاث لـ (${extraContext}) في منطقة (${area.name}) مع رويال موفرز VIP`
-      : `السلام عليكم، أود حجز موعد لنقل أثاث في منطقة (${area.name}) مع شركة رويال موفرز VIP والاستفادة من المعاينة المجانية`;
+      : `السلام عليكم، أود حجز موعد لنقل أثاث في منطقة (${area.name}) مع شركة رويال موفرز VIP والاستفادة من المعاينة المسبقة`;
     
     const waUrl = `https://wa.me/${COMPANY_DATA.whatsappInternational}?text=${encodeURIComponent(text)}`;
     trackWhatsAppClick(waUrl, `صفحة منطقة ${area.name} (واتساب)`);
@@ -275,7 +275,7 @@ export const DedicatedAreaLandingPage: React.FC<DedicatedAreaLandingPageProps> =
 
               <div>
                 <h3 className="text-xl sm:text-2xl font-black text-white leading-snug">
-                  معاينة فنية مجانية في {area.name}
+                  معاينة فنية مسبقة في {area.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-emerald-100 font-medium leading-relaxed mt-1">
                   فريقنا يزور موقعك لتحديد حجم الأثاث واختيار أفضل زاوية للونش وتقديم عرض سعر دقيق وثابت دون أي التزام.
@@ -294,7 +294,7 @@ export const DedicatedAreaLandingPage: React.FC<DedicatedAreaLandingPageProps> =
 
                 <button
                   type="button"
-                  onClick={() => handleWhatsAppBooking('معاينة مجانية')}
+                  onClick={() => handleWhatsAppBooking('معاينة مسبقة')}
                   className="w-full flex items-center justify-center gap-2 bg-emerald-950/60 hover:bg-emerald-950 text-white font-black py-2.5 px-4 rounded-xl text-xs sm:text-sm border border-emerald-400/40 transition-all cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
@@ -533,7 +533,7 @@ export const DedicatedAreaLandingPage: React.FC<DedicatedAreaLandingPageProps> =
             جاهزون لنقل أثاثك في {area.name} بأمان تام 👑
           </h3>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-medium">
-            تواصل معنا الآن للحصول على معاينة فنية مجانية، تحديد موعد الونش والسيارات، واستخراج تصاريح البوابات الرسمية فورياً.
+            تواصل معنا الآن للحصول على معاينة فنية مسبقة، تحديد موعد الونش والسيارات، واستخراج تصاريح البوابات الرسمية فورياً.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

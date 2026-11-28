@@ -27,7 +27,7 @@ export const QuickContactForm: React.FC = () => {
         `• اسم العميل: ${customerName || 'عميل رويال موفرز VIP'}\n` +
         `• رقم الهاتف: ${normalizedPhone}\n` +
         `"مش مجرد عمال نقل.. إحنا حراس لرفاهيتك."\n` +
-        `برجاء التواصل لتأكيد الموعد والمعاينة الفنية المجانية.`
+        `برجاء التواصل لتأكيد الموعد والمعاينة الفنية المسبقة.`
     );
     return `https://wa.me/${CONTACT_INFO.whatsappInternational}?text=${msg}`;
   };
@@ -133,7 +133,7 @@ export const QuickContactForm: React.FC = () => {
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-8 relative z-10">
             <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-black px-4 py-1.5 rounded-full shadow-xs">
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>حجز موعد ومعاينة مجانية 👑</span>
+              <span>حجز موعد ومعاينة مسبقة 👑</span>
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight">

@@ -1,16 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { handlePhoneCallClick } from '../utils/analytics';
-import { motion, AnimatePresence } from 'motion/react';
 import { 
   HelpCircle, 
   ChevronDown, 
   Search, 
   X, 
-  Sparkles, 
   Phone, 
-  SlidersHorizontal,
-  Plus,
-  Minus,
   CheckCircle2
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
@@ -27,7 +22,7 @@ export const FaqSection: React.FC = () => {
     { id: 'الكل', label: 'جميع الأسئلة' },
     { id: 'أسعار', label: 'الأسعار والتكاليف' },
     { id: 'ونش', label: 'الونش الهيدروليكي (2500ج)' },
-    { id: 'تكييف', label: 'التكييف والأجهزة (800ج)' },
+    { id: 'تكييف', label: 'التكييف والأجهزة (1200ج)' },
     { id: 'تغليف', label: 'التغليف والصيني' },
     { id: 'أمان', label: 'الأمان والسلامة' },
     { id: 'مواعيد', label: 'المواعيد والمحافظات' },
@@ -94,8 +89,9 @@ export const FaqSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="p-2 ml-1 text-slate-400 hover:text-slate-600"
+                className="p-2 ml-1 text-slate-600 hover:text-slate-900"
                 title="مسح البحث"
+                aria-label="مسح البحث"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -163,10 +159,10 @@ export const FaqSection: React.FC = () => {
         {/* Dynamic Accordion List */}
         {filteredFaqs.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-            <HelpCircle className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-            <h4 className="font-bold text-slate-800 text-base mb-1">
+            <HelpCircle className="w-12 h-12 text-slate-500 mx-auto mb-3" />
+            <h3 className="font-bold text-slate-800 text-base mb-1">
               لم نعثر على أسئلة مطابقة لبحثك "{searchQuery}"
-            </h4>
+            </h3>
             <p className="text-xs text-slate-500 mb-4">
               يمكنك مسح البحث أو التواصل معنا مباشرة للإجابة على أي استفسار فورياً.
             </p>
@@ -221,24 +217,15 @@ export const FaqSection: React.FC = () => {
                     </div>
                   </button>
 
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: 'easeInOut' }}
-                      >
-                        <div className="px-5 pb-5 pt-2 border-t border-slate-100 text-sm sm:text-base lg:text-lg text-slate-700 font-medium leading-relaxed space-y-2">
-                          <p>{faq.a}</p>
-                          <div className="flex items-center gap-2 pt-2 text-xs font-bold text-emerald-600">
-                            <CheckCircle2 className="w-4 h-4" />
-                            <span>معتمد من شركة رويال موفرز لنقل وتغليف الأثاث VIP | Shelha Furniture Movers</span>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {isOpen && (
+                    <div className="px-5 pb-5 pt-2 border-t border-slate-100 text-sm sm:text-base lg:text-lg text-slate-700 font-medium leading-relaxed space-y-2">
+                      <p>{faq.a}</p>
+                      <div className="flex items-center gap-2 pt-2 text-xs font-bold text-emerald-700">
+                        <CheckCircle2 className="w-4 h-4 shrink-0" />
+                        <span>معتمد من شركة رويال موفرز لنقل وتغليف الأثاث VIP | Shelha Furniture Movers</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -246,12 +233,12 @@ export const FaqSection: React.FC = () => {
         )}
 
         {/* Live Support Direct Help Card */}
-        <div className="bg-gradient-to-r from-blue-900 to-sky-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="bg-blue-950 text-white border-2 border-[#E9DFC9] rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-right">
             <h3 className="text-lg sm:text-xl font-black">
-              عندك استفسار خاص أو محتاج معاينة مجانية؟
+              عندك استفسار خاص أو محتاج معاينة مسبقة؟
             </h3>
-            <p className="text-xs sm:text-sm text-sky-100 max-w-lg">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-lg">
               فريق خدمة عملاء رويال موفرز VIP متاح 24 ساعة للرد على استفسارك ومساعدتك في اختيار أنسب باقة لنقل بيتك.
             </p>
           </div>
@@ -263,7 +250,7 @@ export const FaqSection: React.FC = () => {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-2xl text-xs sm:text-sm font-black shadow-md transition-transform hover:scale-105 active:scale-95"
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-5 py-3 rounded-2xl text-xs sm:text-sm font-black shadow-md transition-transform hover:scale-105 active:scale-95"
             >
               <WhatsAppIcon className="w-4 h-4 text-white" />
               <span>واتساب فوري</span>
@@ -272,7 +259,7 @@ export const FaqSection: React.FC = () => {
             <a
               href={`tel:${COMPANY_DATA.phones[0].number}`}
               onClick={(e) => handlePhoneCallClick(e, `tel:${COMPANY_DATA.phones[0].number}`, 'الأسئلة الشائعة (اتصال)')}
-              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-white text-blue-900 hover:bg-slate-100 px-5 py-3 rounded-2xl text-xs sm:text-sm font-black shadow-md transition-transform hover:scale-105 active:scale-95"
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 border border-[#E9DFC9] px-5 py-3 rounded-2xl text-xs sm:text-sm font-black shadow-md transition-transform hover:scale-105 active:scale-95"
             >
               <Phone className="w-4 h-4 text-blue-700" />
               <span>اتصال مباشر</span>

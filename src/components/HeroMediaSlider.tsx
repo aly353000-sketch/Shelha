@@ -108,20 +108,35 @@ export const HeroMediaSlider: React.FC = () => {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
-  // Auto sliding every 4.8 seconds (gentle & relaxed pace for eye comfort)
   useEffect(() => {
-    if (isPaused) return;
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsVisible(entries[0]?.isIntersecting ?? true);
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto sliding every 6.2 seconds when visible (gentle pace & avoids churning during initial load)
+  useEffect(() => {
+    if (isPaused || !isVisible) return;
 
     timerRef.current = setInterval(() => {
       setHasSlid(true);
       setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
-    }, 4800);
+    }, 6200);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused]);
+  }, [isPaused, isVisible]);
 
   // Handle active slide video play/pause
   useEffect(() => {
@@ -191,17 +206,15 @@ export const HeroMediaSlider: React.FC = () => {
 
   return (
     <div
+      ref={containerRef}
       className="relative mx-auto max-w-md lg:max-w-none group"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       role="region"
       aria-label={t('معرض صور وفيديو رويال موفرز', 'Shilha Media Showcase')}
     >
-      {/* Soothing Royal Blue Glow Behind the Media Card */}
-      <div className="absolute -inset-1.5 bg-gradient-to-tr from-blue-600 via-sky-400 to-cyan-300 rounded-3xl blur-md opacity-50 group-hover:opacity-90 transition duration-700 pointer-events-none" />
-
       {/* Main Media Container */}
-      <div className="relative rounded-3xl overflow-hidden border shadow-2xl transition-colors duration-300 bg-[#051530] border-blue-800/80">
+      <div className="relative rounded-3xl overflow-hidden border shadow-xl transition-colors duration-300 bg-[#051530] border-blue-800/80">
         {/* Horizontal Sliding Carousel Track */}
         <div
           className="relative h-[440px] sm:h-[500px] lg:h-[540px] w-full overflow-hidden bg-slate-950"
@@ -251,7 +264,7 @@ export const HeroMediaSlider: React.FC = () => {
                             <button
                               type="button"
                               onClick={toggleVideoPlayback}
-                              className="p-2 rounded-xl bg-slate-900/85 hover:bg-blue-700 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
+                              className="p-2 rounded-xl bg-slate-900/90 hover:bg-blue-700 text-white border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
                               title={isVideoPlaying ? t('إيقاف مؤقت', 'Pause') : t('تشغيل', 'Play')}
                               aria-label={isVideoPlaying ? t('إيقاف الفيديو مؤقتاً', 'Pause video') : t('تشغيل الفيديو', 'Play video')}
                             >
@@ -260,7 +273,7 @@ export const HeroMediaSlider: React.FC = () => {
                             <button
                               type="button"
                               onClick={toggleVideoSound}
-                              className="p-2 rounded-xl bg-slate-900/85 hover:bg-blue-700 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
+                              className="p-2 rounded-xl bg-slate-900/90 hover:bg-blue-700 text-white border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
                               title={isVideoMuted ? t('تشغيل الصوت', 'Unmute') : t('كتم الصوت', 'Mute')}
                               aria-label={isVideoMuted ? t('تشغيل الصوت', 'Unmute video') : t('كتم الصوت', 'Mute video')}
                             >
@@ -322,29 +335,29 @@ export const HeroMediaSlider: React.FC = () => {
 
           {/* Top Floating Badges (single flex row prevents mobile overlap) */}
           <div className="absolute top-3 inset-x-3 sm:top-4 sm:inset-x-4 z-20 flex items-center justify-between gap-2 pointer-events-none">
-            <div className="min-w-0 bg-slate-950/85 backdrop-blur-md border border-sky-400/40 rounded-xl px-2.5 sm:px-3 py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-lg">
-              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 shrink-0 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+            <div className="min-w-0 bg-slate-950/90 border border-sky-400/40 rounded-xl px-2.5 sm:px-3 py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-md">
+              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
               <span className="text-[11px] sm:text-xs font-bold text-white truncate">
                 {t(currentSlide.badgeAr, currentSlide.badgeEn)}
               </span>
             </div>
 
             <div className="shrink-0 flex items-center gap-1.5">
-              <div className="bg-blue-700/95 backdrop-blur-md text-white font-black rounded-xl px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs flex items-center gap-1 shadow-md border border-blue-400/30 whitespace-nowrap">
+              <div className="bg-blue-700 text-white font-black rounded-xl px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs flex items-center gap-1 shadow-md border border-blue-400/30 whitespace-nowrap">
                 <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current text-sky-200 shrink-0" aria-hidden="true" />
                 <span>4.9 / 5</span>
               </div>
-              <div className="bg-slate-950/85 backdrop-blur-md text-slate-200 font-mono text-[11px] sm:text-xs px-2 py-1 rounded-xl border border-white/15 whitespace-nowrap">
+              <div className="bg-slate-950/90 text-slate-200 font-mono text-[11px] sm:text-xs px-2 py-1 rounded-xl border border-white/15 whitespace-nowrap">
                 {currentIndex + 1} / {SLIDES.length}
               </div>
             </div>
           </div>
 
-          {/* Navigation Arrows (Glassmorphic) */}
+          {/* Navigation Arrows */}
           <button
             type="button"
             onClick={lang === 'ar' ? handleNext : handlePrev}
-            className="absolute top-1/2 -translate-y-1/2 right-3 z-20 p-2.5 rounded-full bg-slate-950/60 hover:bg-blue-600 text-white backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-xl"
+            className="absolute top-1/2 -translate-y-1/2 right-3 z-20 p-2.5 rounded-full bg-slate-950/85 hover:bg-blue-600 text-white border border-white/20 transition-all opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
             aria-label={t('السابق', 'Previous')}
           >
             <ChevronRight className="w-5 h-5" />
@@ -353,14 +366,14 @@ export const HeroMediaSlider: React.FC = () => {
           <button
             type="button"
             onClick={lang === 'ar' ? handlePrev : handleNext}
-            className="absolute top-1/2 -translate-y-1/2 left-3 z-20 p-2.5 rounded-full bg-slate-950/60 hover:bg-blue-600 text-white backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-xl"
+            className="absolute top-1/2 -translate-y-1/2 left-3 z-20 p-2.5 rounded-full bg-slate-950/85 hover:bg-blue-600 text-white border border-white/20 transition-all opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
             aria-label={t('التالي', 'Next')}
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Bottom Slide Info Overlay with Eye-Comfortable Styling */}
-          <div className="absolute bottom-4 right-4 left-4 z-20 p-3.5 bg-slate-950/85 backdrop-blur-md rounded-2xl border border-blue-900/60 space-y-2">
+          {/* Bottom Slide Info Overlay */}
+          <div className="absolute bottom-4 right-4 left-4 z-20 p-3.5 bg-slate-950/92 rounded-2xl border border-blue-900/60 space-y-2">
             <div className="flex items-center justify-between text-xs text-sky-400 font-bold">
               <span>{t('جاهزون للانطلاق لخدمتك فوراً', 'Ready to dispatch immediately')}</span>
               <span className="text-slate-300 font-normal">{t('وصول خلال 30 دقيقة', 'ETA: 30 mins')}</span>

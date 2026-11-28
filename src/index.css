@@ -1,15 +1,302 @@
 @import "tailwindcss";
+/* ===== inlined from src/theme-ivory.css (AI Studio cannot add new files) ===== */
+/* ============================================================
+   Royal Movers VIP — ivory redesign layer (v3)
+   page #FAF6EE · card #FFFFFF/#FFFDF8 · gold #B45309
+   ink #292019 · body #57534E · muted #78716C · line #E9DFC9
+   Colour-only override: no markup, text or content is changed.
+   ============================================================ */
 
-/* Exclude unused legacy components from CSS scanning to keep render-blocking CSS minimal */
+html, body {
+  background-color: #FAF6EE !important;
+  color: #292019 !important;
+}
+
+/* ---------- 1. any dark arbitrary surface -> white card ---------- */
+[class*="bg-[#0"] {
+  background-color: #FFFFFF !important;
+}
+
+/* ---------- 2. page-level dark sections -> ivory ---------- */
+[class*="bg-[#020b18]"],
+[class*="bg-[#030d22]"],
+[class*="bg-[#030d20]"],
+[class*="bg-[#030e20]"],
+[class*="bg-[#020d20]"],
+[class*="bg-[#010816]"],
+[class*="bg-[#010714]"],
+[class*="bg-[#041a22]"],
+[class*="bg-[#051532]"],
+[class*="bg-[#051530]"],
+[class*="bg-slate-950"],
+[class*="bg-slate-900"] {
+  background-color: #FAF6EE !important;
+}
+
+/* ---------- 3. nav bar -> warm white ---------- */
+[class*="bg-[#020b18]/95"] {
+  background-color: #FFFDF8 !important;
+}
+
+/* ---------- 4. named dark panels -> white ---------- */
+[class*="bg-slate-800"],
+[class*="bg-slate-700"],
+[class*="bg-blue-950"],
+[class*="bg-blue-900"],
+[class*="bg-blue-800"],
+[class*="bg-blue-100"],
+[class*="bg-slate-600"] {
+  background-color: #F7EBD9 !important;
+}
+
+/* ---------- 5. translucent white glass -> solid white card ---------- */
+[class*="bg-white/"] {
+  background-color: #FFFFFF !important;
+}
+
+/* ---------- 6. text colours ---------- */
+[class*="text-white"],
+[class*="text-slate-50"],
+[class*="text-slate-100"],
+[class*="text-slate-200"],
+[class*="text-[#e2e8f0]"],
+[class*="text-[#f1f5f9]"] {
+  color: #292019 !important;
+}
+[class*="text-slate-300"],
+[class*="text-slate-400"],
+[class*="text-[#cbd5e1]"] {
+  color: #57534E !important;
+}
+[class*="text-slate-500"],
+[class*="text-slate-600"] {
+  color: #57534E !important;
+}
+[class*="text-amber-"],
+[class*="text-yellow-"],
+[class*="text-[#f59e0b]"],
+[class*="text-[#fbbf24]"],
+[class*="text-[#facc15]"],
+[class*="text-[#fde68a]"],
+[class*="text-[#fef08a]"],
+[class*="text-[#d97706]"] {
+  color: #92400E !important;
+}
+[class*="text-sky-"],
+[class*="text-blue-100"],
+[class*="text-blue-200"],
+[class*="text-blue-300"],
+[class*="text-blue-400"],
+[class*="text-[#38bdf8]"],
+[class*="text-[#7dd3fc]"] {
+  color: #57534E !important;
+}
+
+/* ---------- 7. borders / dividers ---------- */
+[class*="border-white/"],
+[class*="border-slate-5"],
+[class*="border-slate-6"],
+[class*="border-slate-7"],
+[class*="border-slate-8"],
+[class*="border-blue-8"],
+[class*="border-blue-9"],
+[class*="border-[#1e3a8a]"],
+[class*="border-[#334155]"] {
+  border-color: #E9DFC9 !important;
+}
+[class*="divide-white/"],
+[class*="divide-slate-7"],
+[class*="divide-slate-8"] {
+  border-color: #E9DFC9 !important;
+}
+
+/* ---------- 8. dark gradients -> ivory washes ---------- */
+[class*="from-[#0"]:not([class*="to-transparent"]),
+[class*="from-[#1"]:not([class*="to-transparent"]),
+[class*="from-blue-950"]:not([class*="to-transparent"]),
+[class*="from-blue-900"]:not([class*="to-transparent"]),
+[class*="from-blue-800"]:not([class*="to-transparent"]),
+[class*="from-slate-950"]:not([class*="to-transparent"]),
+[class*="from-slate-900"]:not([class*="to-transparent"]) {
+  --tw-gradient-from: #FAF6EE !important;
+}
+[class*="via-[#0"]:not([class*="to-transparent"]),
+[class*="via-[#1"]:not([class*="to-transparent"]),
+[class*="via-blue-950"]:not([class*="to-transparent"]),
+[class*="via-blue-900"]:not([class*="to-transparent"]),
+[class*="via-blue-800"]:not([class*="to-transparent"]),
+[class*="via-blue-700"]:not([class*="to-transparent"]),
+[class*="via-slate-950"]:not([class*="to-transparent"]),
+[class*="via-slate-900"]:not([class*="to-transparent"]) {
+  --tw-gradient-via: #FFFDF8 !important;
+}
+[class*="to-[#0"]:not([class*="to-transparent"]),
+[class*="to-[#1"]:not([class*="to-transparent"]),
+[class*="to-blue-950"]:not([class*="to-transparent"]),
+[class*="to-blue-900"]:not([class*="to-transparent"]),
+[class*="to-blue-800"]:not([class*="to-transparent"]),
+[class*="to-slate-950"]:not([class*="to-transparent"]),
+[class*="to-slate-900"]:not([class*="to-transparent"]) {
+  --tw-gradient-to: #FFFDF8 !important;
+}
+
+/* ---------- 9. photo overlays: warm dark fade, cream text ---------- */
+[class*="from-[#0"][class*="to-transparent"] {
+  --tw-gradient-from: rgba(30, 20, 5, 0.88) !important;
+  --tw-gradient-via: rgba(30, 20, 5, 0.40) !important;
+  --tw-gradient-to: transparent !important;
+}
+[class*="from-[#0"][class*="to-transparent"] [class*="text-white"] {
+  color: #FFF8EC !important;
+}
+
+/* ---------- 10. top ticker bar: dark ink, cream text (as approved) ---------- */
+[class*="from-blue-800"][class*="via-blue-700"]:not([class*="rounded-full"]) {
+  --tw-gradient-from: #292019 !important;
+  --tw-gradient-via: #3A2E22 !important;
+  --tw-gradient-to: #292019 !important;
+  color: #F5EBD7 !important;
+}
+[class*="from-blue-800"][class*="via-blue-700"]:not([class*="rounded-full"]) * {
+  color: #F5EBD7 !important;
+}
+
+/* ---------- 11. filled buttons & badges keep WCAG-AA compliant text ---------- */
+.bg-blue-500,
+.bg-blue-600,
+.bg-blue-700,
+.bg-blue-500 *,
+.bg-blue-600 *,
+.bg-blue-700 * {
+  color: #FFFFFF !important;
+}
+.bg-blue-500 {
+  background-color: #1D4ED8 !important;
+}
+.bg-emerald-600,
+.bg-emerald-700,
+.bg-green-600,
+.bg-emerald-600 *,
+.bg-emerald-700 *,
+.bg-green-600 * {
+  color: #FFFFFF !important;
+}
+.bg-emerald-600 {
+  background-color: #047857 !important;
+}
+.bg-green-600 {
+  background-color: #15803D !important;
+}
+[class*="bg-[#16a34a]"]:not([class*="bg-[#16a34a]/"]),
+[class*="bg-[#0284c7]"]:not([class*="bg-[#0284c7]/"]),
+[class*="bg-[#1d4ed8]"]:not([class*="bg-[#1d4ed8]/"]),
+[class*="bg-[#b45309]"]:not([class*="bg-[#b45309]/"]) {
+  color: #FFFFFF !important;
+}
+/* Warm gold/amber surfaces must use high-contrast dark ink (#1C140D) rather than low-contrast white */
+.bg-amber-400,
+.bg-amber-500,
+.bg-amber-600,
+.from-amber-400,
+.from-amber-500,
+.bg-amber-400 *,
+.bg-amber-500 *,
+.bg-amber-600 *,
+.from-amber-400 *,
+.from-amber-500 *,
+[class*="bg-[#d97706]"]:not([class*="bg-[#d97706]/"]) {
+  color: #1C140D !important;
+}
+
+
+/* ---------- 12. gradient-clipped headings -> gold ---------- */
+[class*="bg-clip-text"] {
+  background-image: linear-gradient(to left, #B45309, #D97706, #92400E) !important;
+}
+
+/* ---------- 13. floating call pill: brand blue, white text ---------- */
+[class*="from-blue-800"][class*="via-blue-700"][class*="rounded-full"] {
+  --tw-gradient-from: #1E40AF !important;
+  --tw-gradient-via: #1D4ED8 !important;
+  --tw-gradient-to: #2563EB !important;
+  color: #FFFFFF !important;
+}
+[class*="from-blue-800"][class*="via-blue-700"][class*="rounded-full"] * {
+  color: #FFFFFF !important;
+}
+[class*="from-blue-800"][class*="via-blue-700"][class*="rounded-full"] [class*="bg-white/"] {
+  background-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* ---------- 14. gradient CTA buttons keep white text ---------- */
+[class*="from-blue-700"],
+[class*="from-blue-600"],
+[class*="from-blue-500"],
+[class*="from-emerald-"],
+[class*="from-green-"] {
+  color: #FFFFFF !important;
+}
+[class*="from-blue-700"] *,
+[class*="from-blue-600"] *,
+[class*="from-blue-500"] *,
+[class*="from-emerald-"] *,
+[class*="from-green-"] * {
+  color: #FFFFFF !important;
+}
+
+
+/* ---------- 15. floating action pills ---------- */
+.float-pill,
+.float-pill * {
+  color: #FFFFFF !important;
+}
+.float-wa { background-color: #047857 !important; }
+.float-call { background-color: #1D4ED8 !important; }
+.float-call2 { background-color: #292019 !important; }
+
+
+/* ---------- 16. top ticker marquee ---------- */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: shelha-ticker 24s linear infinite;
+  will-change: transform;
+}
+.ticker-half {
+  display: inline-flex;
+  align-items: center;
+}
+.ticker-item {
+  direction: rtl;
+  white-space: nowrap;
+  padding: 0 1.1rem;
+}
+@keyframes shelha-ticker {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* ===== end theme-ivory ===== */
+
+/* Offscreen below-the-fold layout/paint skip */
+.below-fold-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Exclude unused legacy components & non-UI data files from CSS scanning */
 @source not "./components/LuxuryCompoundsExplorer.tsx";
 @source not "./components/Testimonials.tsx";
 @source not "./components/FurnitureTransformationArticle.tsx";
 @source not "./components/ServicesSection.tsx";
 @source not "./components/WinchAndPackingDeepDive.tsx";
 @source not "./components/HydraulicWinchIllustration.tsx";
-@source not "./components/FaqSection.tsx";
 @source not "./components/MovingTipsGuide.tsx";
 @source not "./components/WorkProcess.tsx";
+@source not "./components/store";
+@source not "./components/AuraglowPriceList.tsx";
+@source not "./data/seoArticles.ts";
+@source not "./utils/seoArticles.ts";
 
 /* Force dark variant to require .dark class so OS dark-mode media queries never wash out text */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -20,13 +307,13 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #f1f5f9;
-    background-color: #020b18;
+    color: #292019;
+    background-color: #FAF6EE;
     overflow-x: hidden;
   }
   
   body {
-    background-color: #020b18;
+    background-color: #FAF6EE;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }

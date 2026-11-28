@@ -97,7 +97,7 @@ export const InteractiveServicesFlipCards: React.FC = () => {
       id: 'ac',
       title: 'فنيو تكييف وأجهزة كهربائية معتمدة',
       subtitle: 'فك وتركيب التكييف بعناية مع حفظ شحنة الفريون وضمان التشغيل الفوري',
-      badge: '800 ج.م للوحدة ❄️',
+      badge: '1200 ج.م للوحدة ❄️',
       image: '/assets/images/royal_ac_technician.webp',
       icon: Wind,
       features: [
@@ -230,8 +230,9 @@ export const InteractiveServicesFlipCards: React.FC = () => {
                           type="button"
                           tabIndex={isFlipped ? -1 : 0}
                           onClick={(e) => toggleFlip(card.id, e)}
-                          className="bg-slate-950/85 hover:bg-amber-400 hover:text-slate-950 text-white p-2.5 rounded-xl backdrop-blur-md transition-all shadow-lg cursor-pointer flex items-center gap-1.5 text-xs font-black border border-white/20 active:scale-95"
+                          className="bg-slate-950/90 hover:bg-amber-400 hover:text-slate-950 text-white p-2.5 rounded-xl transition-all shadow-md cursor-pointer flex items-center gap-1.5 text-xs font-black border border-white/20 active:scale-95"
                           title="اقلب الكارت للتفاصيل"
+                          aria-label={`اقلب كارت ${card.title} لعرض التفاصيل`}
                         >
                           <RotateCw className="w-4 h-4 text-amber-400 hover:text-slate-950" />
                           <span>اقلب الكارت</span>
@@ -281,9 +282,9 @@ export const InteractiveServicesFlipCards: React.FC = () => {
                           <IconComponent className="w-5 h-5" />
                         </div>
                         <div>
-                          <h4 className="text-base sm:text-lg font-black text-amber-400">
+                          <h3 className="text-base sm:text-lg font-black text-amber-400">
                             {card.title}
-                          </h4>
+                          </h3>
                           <span className="text-[11px] text-sky-200 font-bold block">
                             جودة VIP المعتمدة للشقق والفلل بسعر مناسب
                           </span>
@@ -296,6 +297,7 @@ export const InteractiveServicesFlipCards: React.FC = () => {
                         onClick={(e) => toggleFlip(card.id, e)}
                         className="p-2.5 rounded-xl bg-amber-500 text-slate-950 font-black text-xs hover:bg-amber-400 transition-all cursor-pointer flex items-center gap-1 shadow-md active:scale-95"
                         title="اقلب الكارت للواجهة"
+                        aria-label={`عودة لواجهة ${card.title}`}
                       >
                         <RotateCw className="w-3.5 h-3.5" />
                         <span>الواجهة</span>

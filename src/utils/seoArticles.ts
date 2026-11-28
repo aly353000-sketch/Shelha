@@ -281,7 +281,7 @@ function buildHeaderHtml(): string {
           <a href="/">الصفحة الرئيسية</a>
           <a href="/articles/">مقالات وأدلة النقل</a>
           <a href="/#interactive-services">الخدمات</a>
-          <a href="/#quick-contact">حجز معاينة مجانية</a>
+          <a href="/#quick-contact">حجز معاينة مسبقة</a>
         </nav>
       </div>
     </header>`;
@@ -476,7 +476,7 @@ ${sectionsHtml}
 
         <div class="cta-box">
           <h2>جاهز تنتقل بدون أي تعب أو خدش؟</h2>
-          <p>تواصل الآن مع فريق رويال موفرز VIP للحصول على معاينة مجانية وعرض سعر ثابت شامل التغليف الأوروبي 5 طبقات والفك والتركيب.</p>
+          <p>تواصل الآن مع فريق رويال موفرز VIP للحصول على معاينة مسبقة وعرض سعر ثابت شامل التغليف الأوروبي 5 طبقات والفك والتركيب.</p>
           <div class="cta-actions">
             <a class="btn btn-wa" href="${escapeHtml(waUrl)}" target="_blank" rel="noopener noreferrer">احجز معاينة عبر واتساب</a>
             <a class="btn btn-call" href="tel:${PHONE_DISPLAY}" onclick="return gtag_report_conversion('tel:${PHONE_DISPLAY}');">اتصال فوري: <span dir="ltr">${PHONE_DISPLAY}</span></a>
@@ -603,7 +603,7 @@ ${cardsHtml}
         <h2>محتاج عرض سعر دقيق لشقتك أو فيلتك؟</h2>
         <p>تواصل معنا مباشرة على واتساب أو الخط الساخن الموحد 24 ساعة لتحصل على خطة نقل وتغليف متكاملة بسعر ثابت.</p>
         <div class="cta-actions">
-          <a class="btn btn-wa" href="${escapeHtml(waUrl)}" target="_blank" rel="noopener noreferrer">احجز معاينة مجانية عبر واتساب</a>
+          <a class="btn btn-wa" href="${escapeHtml(waUrl)}" target="_blank" rel="noopener noreferrer">احجز معاينة مسبقة عبر واتساب</a>
           <a class="btn btn-call" href="tel:${PHONE_DISPLAY}" onclick="return gtag_report_conversion('tel:${PHONE_DISPLAY}');">اتصل الآن: <span dir="ltr">${PHONE_DISPLAY}</span></a>
         </div>
       </div>

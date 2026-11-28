@@ -330,7 +330,7 @@ export const ServicesSection: React.FC = () => {
                     </a>
 
                     <div className="text-xs sm:text-sm text-sky-400 font-bold w-full sm:w-auto text-center sm:text-right">
-                      ⚡ {t('معاينة مجانية وتحديد سعر ثابت قبل البدء', 'Free inspection and fixed upfront price')}
+                      ⚡ {t('معاينة مسبقة وتحديد سعر ثابت قبل البدء', 'Pre-visit inspection and fixed upfront price')}
                     </div>
                   </div>
 

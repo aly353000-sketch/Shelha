@@ -128,31 +128,45 @@ export const Navbar: React.FC<NavbarProps> = ({
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      {/* Top Banner with Royal Blue Gradient (WCAG AA compliant) */}
-      <div className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white font-medium text-xs sm:text-sm py-2 px-3 sm:px-6 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 font-bold">
-            <Clock className="w-4 h-4 text-sky-200" />
-            <span>{t('متاحون 24 ساعة طوال الأسبوع', '24/7 Available')}</span>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3 font-bold">
-            <Phone className="w-4 h-4 text-sky-200" />
-            <span>{t('الخط الساخن الموحد:', 'Direct Hotline:')}</span>
-            <a
-              href="tel:01233391255"
-              onClick={(e) => handlePhoneCallClick(e, 'tel:01233391255', 'الشريط العلوي (اتصال)')}
-              className="inline-flex items-center py-1 underline hover:text-sky-200 transition-colors font-mono text-sm sm:text-base font-black tracking-wider"
-              dir="ltr"
-            >
-              01233391255
-            </a>
-          </div>
+      {/* Top Ticker: scrolling info strip (approved demo design) */}
+      <div className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white font-bold text-[11px] sm:text-xs py-1.5 shadow-sm overflow-hidden" dir="ltr" aria-label={t('شريط المعلومات المتحرك', 'Scrolling info ticker')}>
+        <div className="ticker-track">
+          {[0, 1].map((half) => (
+            <div key={half} className="ticker-half" aria-hidden={half === 1}>
+              <span className="ticker-item">{t('متاحون 24 ساعة طوال الأسبوع 🕐', 'Available 24/7 🕐')}</span>
+              <span className="ticker-item">
+                {t('الخط الساخن:', 'Hotline:')}{' '}
+                <a
+                  href="tel:01233391255"
+                  dir="ltr"
+                  tabIndex={half === 1 ? -1 : undefined}
+                  className="underline font-black"
+                  onClick={(e) => handlePhoneCallClick(e, 'tel:01233391255', 'الشريط العلوي (اتصال)')}
+                >
+                  01233391255
+                </a>
+                {' '}{t('أو', 'or')}{' '}
+                <a
+                  href="tel:01128418399"
+                  dir="ltr"
+                  tabIndex={half === 1 ? -1 : undefined}
+                  className="underline font-black"
+                  onClick={(e) => handlePhoneCallClick(e, 'tel:01128418399', 'الشريط العلوي (اتصال 2)')}
+                >
+                  01128418399
+                </a>
+                {' '}📞
+              </span>
+              <span className="ticker-item">{t('خدمة نقل وتغليف فندقية VIP 👑', 'Hotel-grade VIP moving & packing 👑')}</span>
+              <span className="ticker-item">{t('معاينة مسبقة وسعر ثابت قبل التنفيذ ✅', 'Pre-visit survey & fixed price before work ✅')}</span>
+              <span className="ticker-item">{t('تصاريح دخول معتمدة لأكثر من 120 كمبوند 🏰', 'Approved entry permits for 120+ compounds 🏰')}</span>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Main Navbar with Unified Royal Navy Blue Luxury Styling */}
-      <nav aria-label={t('التنقل الرئيسي', 'Main navigation')} className="border-b transition-colors duration-300 bg-[#020b18]/95 backdrop-blur-xl border-blue-900/60 text-white sticky top-0 z-40">
+      <nav aria-label={t('التنقل الرئيسي', 'Main navigation')} className="border-b transition-colors duration-300 bg-[#020b18]/95 border-blue-900/60 text-white sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-3">
           
           {/* Brand Logo & Name (Royal Movers VIP) - Compact, Crisp & Non-Wrapping */}
@@ -405,6 +419,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2.5 sm:px-3 sm:py-2.5 rounded-xl border border-blue-700/80 bg-[#071d49] hover:bg-[#0c2b6b] text-white shadow-md flex items-center gap-1.5 font-black text-xs cursor-pointer active:scale-95 transition-all"
               aria-label={mobileMenuOpen ? 'إغلاق القائمة' : 'أقسام الموقع'}
+              aria-expanded={mobileMenuOpen}
               title="أقسام الموقع"
             >
               {mobileMenuOpen ? (

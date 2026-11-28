@@ -8,17 +8,35 @@ import { AppProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { StatsCounterBar } from './components/StatsCounterBar';
-import { LuxuryCompoundsTrustStrip } from './components/LuxuryCompoundsTrustStrip';
-import { LuxuryAreasTopShowcase } from './components/LuxuryAreasTopShowcase';
-import { InteractiveServicesFlipCards } from './components/InteractiveServicesFlipCards';
-import { VideoShowcase } from './components/VideoShowcase';
-import { RealGallery } from './components/RealGallery';
-import { FaqSection } from './components/FaqSection';
-import { QuickContactForm } from './components/QuickContactForm';
-import { Footer } from './components/Footer';
 import { FloatingActions } from './components/FloatingActions';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { initGlobalConversionTracker } from './utils/analytics';
+
+// Lazy-load below-the-fold sections to slash initial JS & TBT on mobile
+const LuxuryCompoundsTrustStrip = lazy(() =>
+  import('./components/LuxuryCompoundsTrustStrip').then((m) => ({ default: m.LuxuryCompoundsTrustStrip }))
+);
+const LuxuryAreasTopShowcase = lazy(() =>
+  import('./components/LuxuryAreasTopShowcase').then((m) => ({ default: m.LuxuryAreasTopShowcase }))
+);
+const InteractiveServicesFlipCards = lazy(() =>
+  import('./components/InteractiveServicesFlipCards').then((m) => ({ default: m.InteractiveServicesFlipCards }))
+);
+const VideoShowcase = lazy(() =>
+  import('./components/VideoShowcase').then((m) => ({ default: m.VideoShowcase }))
+);
+const RealGallery = lazy(() =>
+  import('./components/RealGallery').then((m) => ({ default: m.RealGallery }))
+);
+const FaqSection = lazy(() =>
+  import('./components/FaqSection').then((m) => ({ default: m.FaqSection }))
+);
+const QuickContactForm = lazy(() =>
+  import('./components/QuickContactForm').then((m) => ({ default: m.QuickContactForm }))
+);
+const Footer = lazy(() =>
+  import('./components/Footer').then((m) => ({ default: m.Footer }))
+);
 
 // Lazy-load interactive modals & area detail view opened on user action
 const DedicatedAreaLandingPage = lazy(() =>
@@ -157,39 +175,57 @@ function MainAppContent() {
 
             <StatsCounterBar />
 
-            <div id="luxury-compounds">
-              <LuxuryCompoundsTrustStrip onSelectArea={handleSelectArea} />
+            <div id="luxury-compounds" className="below-fold-section">
+              <Suspense fallback={<div className="min-h-[380px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <LuxuryCompoundsTrustStrip onSelectArea={handleSelectArea} />
+              </Suspense>
             </div>
 
-            <div id="luxury-areas">
-              <LuxuryAreasTopShowcase onSelectArea={handleSelectArea} />
+            <div id="luxury-areas" className="below-fold-section">
+              <Suspense fallback={<div className="min-h-[600px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <LuxuryAreasTopShowcase onSelectArea={handleSelectArea} />
+              </Suspense>
             </div>
 
-            <div id="services">
+            <div id="services" className="below-fold-section">
               <div id="packing-section" />
-              <InteractiveServicesFlipCards />
+              <Suspense fallback={<div className="min-h-[900px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <InteractiveServicesFlipCards />
+              </Suspense>
             </div>
 
-            <div id="winch-section">
+            <div id="winch-section" className="below-fold-section">
               <div id="video-section" />
-              <VideoShowcase />
+              <Suspense fallback={<div className="min-h-[640px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <VideoShowcase />
+              </Suspense>
             </div>
 
-            <div id="gallery">
-              <RealGallery />
+            <div id="gallery" className="below-fold-section">
+              <Suspense fallback={<div className="min-h-[720px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <RealGallery />
+              </Suspense>
             </div>
 
-            <div id="faqs">
-              <FaqSection />
+            <div id="faqs" className="below-fold-section">
+              <Suspense fallback={<div className="min-h-[680px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <FaqSection />
+              </Suspense>
             </div>
 
-            <div id="quick-contact">
+            <div id="quick-contact" className="below-fold-section">
               <div id="contact-form" />
-              <QuickContactForm />
+              <Suspense fallback={<div className="min-h-[480px] bg-[#FAF6EE]" aria-hidden="true" />}>
+                <QuickContactForm />
+              </Suspense>
             </div>
           </main>
 
-          <Footer />
+          <div className="below-fold-section">
+            <Suspense fallback={<div className="min-h-[360px] bg-[#FFFFFF]" aria-hidden="true" />}>
+              <Footer />
+            </Suspense>
+          </div>
         </>
       )}
 

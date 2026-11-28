@@ -29,7 +29,7 @@ test('3 rooms and 1 truck inside Cairo costs 4000 to 7000 EGP with 5 workers', (
   assert.equal(quote.recommendedWinch, false);
 });
 
-test('AC units cost 800 EGP per unit as requested', () => {
+test('AC units cost 1200 EGP per unit as requested', () => {
   const quote = calculateMovingQuote({
     propertyType: 'apartment',
     roomsCount: 3,
@@ -40,16 +40,16 @@ test('AC units cost 800 EGP per unit as requested', () => {
     toArea: 'الشيخ زايد',
     isGovernorate: false,
     needsWinch: false,
-    acUnitsCount: 2, // 2 * 800 = 1600 EGP
+    acUnitsCount: 2, // 2 * 1200 = 2400 EGP
     needsDismantling: false,
     needsPackaging: false,
     needsAppliancesTechnician: false,
     needsKitchenDismantling: false,
   });
 
-  // Base 4000 + 1600 = 5600, 7000 + 1600 = 8600
-  assert.equal(quote.minPrice, 5600);
-  assert.equal(quote.maxPrice, 8600);
+  // Base 4000 + 2400 = 6400, 7000 + 2400 = 9400
+  assert.equal(quote.minPrice, 6400);
+  assert.equal(quote.maxPrice, 9400);
   assert.equal(quote.crewBreakdown.technicians, 1);
 });
 
@@ -114,4 +114,28 @@ test('Packaging catalog calculation correctly totals materials and adds to quote
   assert.equal(quote.maxPrice, 7700);
   assert.equal(quote.packagingMaterialsCost, 680);
   assert.equal(quote.packagingItemsCount, 6);
+});
+
+test('Appliances dismantling costs 200 EGP per appliance, AC excluded', () => {
+  const quote = calculateMovingQuote({
+    propertyType: 'apartment',
+    roomsCount: 3,
+    trucksCount: 1,
+    fromFloor: 2,
+    toFloor: 2,
+    fromArea: 'مدينة نصر',
+    toArea: 'المعادي',
+    isGovernorate: false,
+    needsWinch: false,
+    acUnitsCount: 0,
+    needsDismantling: false,
+    needsPackaging: false,
+    needsAppliancesTechnician: true,
+    appliancesCount: 3, // 3 * 200 = 600 EGP
+    needsKitchenDismantling: false,
+  });
+
+  // Base 4000 + 600 = 4600, 7000 + 600 = 7600
+  assert.equal(quote.minPrice, 4600);
+  assert.equal(quote.maxPrice, 7600);
 });
